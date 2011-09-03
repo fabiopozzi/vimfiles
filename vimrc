@@ -42,7 +42,7 @@ if has('gui_running')
 endif
 
 " Change <leader> to ',' and <localleader> to '\'
-let mapleader=","
+let mapleader="\\"
 let maplocalleader="\\"
 
 noremap <leader>o <Esc>:CommandT<CR>
@@ -161,13 +161,13 @@ let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o
 " something that looks useful.
 set cmdheight=2
 set laststatus=2
-set statusline=[%l,%v\ %P%M][CWD:\ %{CWD()}][FILE:\ %f]\ %r%h%w\ (%{&ff})\%{fugitive#statusline()}\ %#warningmsg#%{SyntasticStatuslineFlag()}%*
+"set statusline=[%l,%v\ %P%M][CWD:\ %{CWD()}][FILE:\ %f]\ %r%h%w\ (%{&ff})\%{fugitive#statusline()}\ %#warningmsg#%{SyntasticStatuslineFlag()}%*
 set showcmd
 set showmode
 set number
 
 function! CWD()
-    let curdir = substitute(getcwd(), '/home/mnazim', "~/", "g")
+    let curdir = substitute(getcwd(), '/home/wintermute', "~/", "g")
     return curdir
 endfunction
 
