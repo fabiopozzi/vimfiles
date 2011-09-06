@@ -221,6 +221,11 @@ nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>W <C-w>s
 nnoremap <leader>s :new<CR>
 
+" open tabs using Ctrl-t
+:nmap <C-t> :tabnew<CR>
+:imap <C-t> <Esc>:tabnew<CR>
+
+
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
