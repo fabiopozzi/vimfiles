@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/wintermute/src/glibc-2.14/catgets'
+let g:netrw_dirhist_2='/home/wintermute/src/glibc-2.14/io'
+let g:netrw_dirhist_3='/home/wintermute/src/glibc-2.14/libio'
+let g:netrw_dirhist_4='/home/wintermute/src/glibc-2.14/string'
