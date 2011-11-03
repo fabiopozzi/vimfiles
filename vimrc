@@ -35,12 +35,6 @@ set noswapfile
 " set undodir=~/.vim/undodir
 " set undofile
 
-
-" Set fixed height width of gvim window
-if has('gui_running')
-  set lines=46
-endif
-
 " Change <leader> to ',' and <localleader> to '\'
 let mapleader="\\"
 let maplocalleader="\\"
