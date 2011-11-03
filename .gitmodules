@@ -1,12 +1,6 @@
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = git://git.wincent.com/command-t.git
-[submodule "bundle/closetag"]
-	path = bundle/closetag
-	url = git://github.com/docunext/closetag.vim.git
-[submodule "bundle/pyflakes"]
-	path = bundle/pyflakes
-	url = git://github.com/kevinw/pyflakes-vim.git
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
