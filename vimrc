@@ -20,7 +20,7 @@ set mousehide
 set mousemodel=popup
 
 " Code folding, folded by default
-set foldmethod=indent
+set foldmethod=manual
 set foldlevel=99
 set foldenable
 
@@ -60,15 +60,15 @@ colorscheme solarized
 autocmd BufEnter * :syntax sync fromstart
 
 " Left/Right arrow keys change buffers in all modes
-noremap <Left> <Esc>:bp<CR>
-inoremap <Left> <Esc>:bp<CR>
-nnoremap <Left> <Esc>:bp<CR>
-vnoremap <Left> <Esc>:bp<CR>
+noremap <Left> <Esc>:tabp<CR>
+inoremap <Left> <Esc>:tabp<CR>
+nnoremap <Left> <Esc>:tabp<CR>
+vnoremap <Left> <Esc>:tabp<CR>
 
-noremap <Right> <Esc>:bn<CR>
-inoremap <Right> <Esc>:bn<CR>
-nnoremap <Right> <Esc>:bn<CR>
-vnoremap <Right> <Esc>:bn<CR>
+noremap <Right> <Esc>:tabn<CR>
+inoremap <Right> <Esc>:tabn<CR>
+nnoremap <Right> <Esc>:tabn<CR>
+vnoremap <Right> <Esc>:tabn<CR>
 
 " Disable up/down arrow keys
 noremap <up> <nop>
@@ -164,6 +164,16 @@ endfunction
 " Tab Settings
 set smarttab
 set tabstop=8
+
+" paste settings
+:map <F10> :set paste<CR>
+:map <F11> :set nopaste<CR>
+:imap <F10> <C-O>:set paste<CR>
+:imap <F11> <nop>
+:set pastetoggle=<F11>
+
+" command to build a c file
+"set makeprg=gcc\ -o\ %<\ %
 
 " Taglist
 let Tlist_Compact_Format = 1
