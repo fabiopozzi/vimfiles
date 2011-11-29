@@ -36,7 +36,7 @@ set noswapfile
 " set undofile
 
 " Change <leader> to ',' and <localleader> to '\'
-let mapleader="\\"
+let mapleader=","
 let maplocalleader="\\"
 
 noremap <leader>o <Esc>:CommandT<CR>
@@ -47,7 +47,8 @@ noremap <leader>m <Esc>:CommandTBuffer<CR>
 
 " tagbar configuration
 let g:tagbar_usearrows = 1
-nnoremap <leader>l :TagbarToggle<CR>
+nmap <leader>l :TagbarToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 
 " Enable syntax colors
 syntax enable
@@ -79,6 +80,16 @@ vnoremap <up> <nop>
 vnoremap <down> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
+
+" Tabularize mappings
+if exists(":Tabularize")
+ nmap <Leader>a= :Tabularize /=<CR>
+ vmap <Leader>a= :Tabularize /=<CR>
+ nmap <Leader>a: :Tabularize /:\zs<CR>
+ vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
+
 
 " Remember cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
