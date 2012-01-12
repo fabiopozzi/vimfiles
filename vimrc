@@ -253,3 +253,7 @@ autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 co
 " ---
 autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 
+" powerline
+" ---
+set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
+let g:Powerline_symbols = 'fancy'
