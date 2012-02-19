@@ -1,9 +1,9 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/wintermute/work/backup/temporaneo/root'
-let g:netrw_dirhist_2='/home/wintermute/work/backup/temporaneo/root/CAN.old'
-let g:netrw_dirhist_3='/home/wintermute/src/buildroot/output/build/build-toolchain/.build/src/glibc-2.9/manual'
-let g:netrw_dirhist_4='/home/wintermute/work/tmp/linux-2.6.30.1_run'
-let g:netrw_dirhist_5='/home/wintermute/work/tmp/linux-2.6.30.1_run/net'
-let g:netrw_dirhist_6='/home/wintermute/work/tmp/linux-2.6.30.1_run/net/mac80211'
-let g:netrw_dirhist_7='/home/wintermute/work/MHT/logger'
+let g:netrw_dirhist_1='/home/wintermute/work/installer_latest/System'
+let g:netrw_dirhist_2='/home/wintermute/src/ls_proj'
+let g:netrw_dirhist_3='/home/wintermute/src/ls_proj/ruby_stuff'
+let g:netrw_dirhist_4='/home/wintermute/src/ls_proj'
+let g:netrw_dirhist_5='/home/wintermute/src/ls_proj/ruby_stuff'
+let g:netrw_dirhist_6='scp://root@10.211.9.237//mnt/data/installer_latest/'
+let g:netrw_dirhist_7='/home/wintermute/work/fom/kernel/linux-2.6.38_run/drivers/net/can/mm_usb2can'

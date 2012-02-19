@@ -29,7 +29,7 @@ set backupdir=~/.vim/sessions
 set dir=~/.vim/sessions
 
 " turn off swapfiles
-set noswapfile
+"set noswapfile
 
 " Set persistent undo (?)
 " set undodir=~/.vim/undodir
@@ -49,6 +49,9 @@ noremap <leader>m <Esc>:CommandTBuffer<CR>
 let g:ackprg="ack -H --nocolor --nogroup --column"
 map <leader>a :Ack! 
 
+" NerdTree bindings
+map <leader>n :NERDTree<CR>
+
 " tagbar configuration
 let g:tagbar_usearrows = 1
 nmap <leader>l :TagbarToggle<CR>
@@ -60,6 +63,9 @@ syntax enable
 " theme configuration
 set background=dark
 colorscheme solarized
+
+" font size
+set guifont=Inconsolata\ 9
 
 " The PC is fast enough, do syntax highlight syncing from start
 autocmd BufEnter * :syntax sync fromstart
@@ -85,19 +91,8 @@ vnoremap <down> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
 
-" Tabularize mappings
-if exists(":Tabularize")
- nmap <Leader>a= :Tabularize /=<CR>
- vmap <Leader>a= :Tabularize /=<CR>
- nmap <Leader>a: :Tabularize /:\zs<CR>
- vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
-
-
-
 " Remember cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
 
 " Enable hidden buffers
 set hidden
@@ -164,7 +159,7 @@ nnoremap <leader>. :lcd %:p:h<CR>
 
 " Make the command line two lines high and change the statusline display to
 " something that looks useful.
-set cmdheight=2
+"set cmdheight=1
 set laststatus=2
 "set statusline=[%l,%v\ %P%M][CWD:\ %{CWD()}][FILE:\ %f]\ %r%h%w\ (%{&ff})\%{fugitive#statusline()}\ %#warningmsg#%{SyntasticStatuslineFlag()}%*
 set showcmd
@@ -190,7 +185,7 @@ set tabstop=8
 
 " Taglist
 let Tlist_Compact_Format = 1
-let Tlist_Ctags_Cmd = 'ctags'
+let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 let Tlist_Enable_Fold_Column = 0
 let Tlist_Exist_OnlyWindow = 1
 let Tlist_File_Fold_Auto_Close = 0
@@ -204,6 +199,24 @@ nnoremap <leader>l :Tlist<CR>
 " Tagbar
 let g:tagbar_usearrows = 1
 nnoremap <leader>l :TagbarToggle<CR>
+
+" cscope settings
+if has('cscope')
+  set cscopetag cscopeverbose
+
+  if has('quickfix')
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
+  endif
+
+  cnoreabbrev csa cs add
+  cnoreabbrev csf cs find
+  cnoreabbrev csk cs kill 
+  cnoreabbrev csr cs reset
+  cnoreabbrev csh cs show 
+  cnoreabbrev csh cs help 
+
+  command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
+endif
 
 " Gvim Settings
 
@@ -224,7 +237,7 @@ endif
 
 
 " Keep some more lines for scope
-set scrolloff=5
+"set scrolloff=5
 
 " hide some files and remove stupid help
 let g:netrw_list_hide='^\.,.\(pyc\|pyo\|o\)$'
@@ -235,8 +248,8 @@ nnoremap <leader>W <C-w>s
 nnoremap <leader>s :new<CR>
 
 " open tabs using Ctrl-t
-:nmap <C-t> :tabnew<CR>
-:imap <C-t> <Esc>:tabnew<CR>
+":nmap <C-t> :tabnew<CR>
+":imap <C-t> <Esc>:tabnew<CR>
 
 
 let g:miniBufExplMapWindowNavVim = 1
