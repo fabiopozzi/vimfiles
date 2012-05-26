@@ -7,9 +7,6 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/vim-scripts/SuperTab.git
-[submodule "bundle/fugitive"]
-	path = bundle/fugitive
-	url = git://github.com/tpope/vim-fugitive.git
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
@@ -28,3 +25,6 @@
 [submodule "bundle/cscope-quickfix"]
 	path = bundle/cscope-quickfix
 	url = https://github.com/vim-scripts/cscope-quickfix.git
+[submodule "bundle/vim-unimpaired"]
+	path = bundle/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
