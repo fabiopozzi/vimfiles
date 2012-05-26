@@ -8,6 +8,11 @@ set nocompatible
 " set line numbers and column indicator on
 set number
 set ruler
+set nocursorcolumn
+set nocursorline
+syntax sync minlines=5
+noremap <F12> <Esc>:syntax sync fromstart<CR>
+inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
 " Fix backspace indentation
 set backspace=indent,eol,start
@@ -65,7 +70,7 @@ set background=dark
 colorscheme solarized
 
 " font size
-set guifont=Inconsolata\ 9
+set guifont=Terminus\ 9
 
 " The PC is fast enough, do syntax highlight syncing from start
 autocmd BufEnter * :syntax sync fromstart
@@ -93,6 +98,10 @@ inoremap <down> <nop>
 
 " Remember cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+" Mutt and vim settings
+" limit text width to 72 characters
+au BufRead /tmp/mutt-* set tw=72
 
 " Enable hidden buffers
 set hidden
@@ -248,8 +257,8 @@ nnoremap <leader>W <C-w>s
 nnoremap <leader>s :new<CR>
 
 " open tabs using Ctrl-t
-":nmap <C-t> :tabnew<CR>
-":imap <C-t> <Esc>:tabnew<CR>
+:nmap <C-t> :tabnew<CR>
+:imap <C-t> <Esc>:tabnew<CR>
 
 
 let g:miniBufExplMapWindowNavVim = 1
