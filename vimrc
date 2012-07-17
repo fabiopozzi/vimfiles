@@ -7,7 +7,7 @@ set nocompatible
 
 " set line numbers and column indicator on
 set number
-set ruler
+"set ruler
 set nocursorcolumn
 set nocursorline
 syntax sync minlines=5
@@ -87,14 +87,14 @@ nnoremap <Right> <Esc>:tabn<CR>
 vnoremap <Right> <Esc>:tabn<CR>
 
 " Disable up/down arrow keys
-noremap <up> <nop>
-noremap <down> <nop>
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-vnoremap <up> <nop>
-vnoremap <down> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
+"noremap <up> <nop>
+"noremap <down> <nop>
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"vnoremap <up> <nop>
+"vnoremap <down> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
 
 " Remember cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -114,9 +114,6 @@ set titlestring=%F\ -\ Vim
 " Enable filetype plugins and indention
 filetype on
 filetype plugin on
-
-" Activate a permanent ruler
-set ruler
 
 " Disable Toolbar, Scrollbar
 set guioptions-=T
@@ -158,7 +155,8 @@ nnoremap <leader>v V`]'
 " Copy/Paste to and from Desktop Environment
 noremap <leader>yy "+y
 noremap <leader>pp "+gP
-
+" paste multiple times
+"noremap p pgvy
 
 " Quit window on <leader>q
 nnoremap <leader>q :q<CR>
@@ -173,7 +171,6 @@ set laststatus=2
 "set statusline=[%l,%v\ %P%M][CWD:\ %{CWD()}][FILE:\ %f]\ %r%h%w\ (%{&ff})\%{fugitive#statusline()}\ %#warningmsg#%{SyntasticStatuslineFlag()}%*
 set showcmd
 set showmode
-set number
 
 function! CWD()
     let curdir = substitute(getcwd(), '/home/wintermute', "~/", "g")
@@ -191,6 +188,9 @@ set tabstop=8
 
 " command to build a c file
 "set makeprg=gcc\ -o\ %<\ %
+
+" automatically lookup for the tags file in the file tree
+"set tags+=tags;
 
 " Taglist
 let Tlist_Compact_Format = 1
@@ -275,7 +275,4 @@ autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 co
 " ---
 autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 
-" powerline
-" ---
 set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
-let g:Powerline_symbols = 'fancy'
