@@ -14,9 +14,6 @@ syntax sync minlines=5
 noremap <F12> <Esc>:syntax sync fromstart<CR>
 inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
-" Fix backspace indentation
-set backspace=indent,eol,start
-
 " Enable mouse everywhere
 set mouse=a
 
@@ -25,7 +22,8 @@ set mousehide
 set mousemodel=popup
 
 " Code folding, folded by default
-set foldmethod=manual
+"set foldmethod=manual
+set foldmethod=syntax
 set foldlevel=99
 set foldenable
 
@@ -113,7 +111,12 @@ set titlestring=%F\ -\ Vim
 
 " Enable filetype plugins and indention
 filetype on
-filetype plugin on
+if has('autocmd')
+  filetype plugin indent on
+
+  autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cc source ~/vimfiles/c.vim
+endif
+" filetype plugin on
 
 " Disable Toolbar, Scrollbar
 set guioptions-=T
@@ -131,9 +134,6 @@ set ttyfast
 set wildmenu
 set wildignore=*.dll,*.o,*.pyc,*.bak,*.exe,*.jpg,*.jpeg,*.png,*.gif,*$py.class,*.class
 set wildmode=list:full
-
-" Go with smartindent if there is no plugin indent file.
-set autoindent smartindent
 
 " Global by default
 set gdefault
@@ -178,8 +178,40 @@ function! CWD()
 endfunction
 
 " Tab Settings
+set noexpandtab   " use tabs, not spaces
+set tabstop=8     " tabstops of 8
+set shiftwidth=8  " indents of 8
+set textwidth=78  " screen in 80 columns wide, wrap at 78
+" Go with smartindent if there is no plugin indent file.
+set autoindent smartindent
 set smarttab
-set tabstop=8
+set backspace=eol,start,indent  " Fix backspace indentation
+"set backspace=indent,eol,start" Fix backspace indentation (original)
+syntax on
+
+" highlighting for some special keywords (linux kernel specific)
+syn keyword cType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t u_int64_t u_int32_t u_int16_t u_int8_t
+syn keyword cOperator likely unlikely
+
+syn match ErrorLeadSpace /^ \+/   "highlight any leading spaces
+syn match ErrorTailSpace / \+$/   "highlight any trailing spaces
+match Error80           /\%>80v.\+/ "highlight anything past 80 in red
+
+if has("gui_running")
+        hi Error80        gui=NONE   guifg=#ffffff   guibg=#6e2e2e
+        hi ErrorLeadSpace gui=NONE   guifg=#ffffff   guibg=#6e2e2e
+        hi ErrorTailSpace gui=NONE   guifg=#ffffff   guibg=#6e2e2e
+else
+        exec "hi Error80        cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(32)
+        exec "hi ErrorLeadSpace cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(33)
+        exec "hi ErrorTailSpace cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(33)
+endif
+
+set formatoptions=tcqlron
+set cinoptions=:0,l1,t0,g0  " configures how to indent parts of code
+
+" Some indenting macros
+nmap <C-J> vip=     "forces (re)indentation of a block
 
 " paste settings
 :map <F10> :set paste<CR>
@@ -276,3 +308,9 @@ autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 co
 autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 
 set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
+
+" fugitive
+" -------
+"switch back to current file and closes fugitive buffer
+nnoremap <Leader>gD :diffoff!<cr><c-w>h:bd<cr>
+
