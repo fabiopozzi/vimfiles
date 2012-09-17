@@ -68,7 +68,7 @@ set background=dark
 colorscheme solarized
 
 " font size
-set guifont=Terminus\ 9
+set guifont=Anonymous\ Pro\ 9
 
 " The PC is fast enough, do syntax highlight syncing from start
 autocmd BufEnter * :syntax sync fromstart
@@ -114,7 +114,7 @@ filetype on
 if has('autocmd')
   filetype plugin indent on
 
-  autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cc source ~/vimfiles/c.vim
+  autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cc source ~/vimfiles/bundle/cvim/plugin/c.vim
 endif
 " filetype plugin on
 
@@ -193,19 +193,20 @@ syntax on
 syn keyword cType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t u_int64_t u_int32_t u_int16_t u_int8_t
 syn keyword cOperator likely unlikely
 
-syn match ErrorLeadSpace /^ \+/   "highlight any leading spaces
-syn match ErrorTailSpace / \+$/   "highlight any trailing spaces
-match Error80           /\%>80v.\+/ "highlight anything past 80 in red
+" Error highlighting doesn't word, disabled for now
+"syn match ErrorLeadSpace /^ \+/   "highlight any leading spaces
+"syn match ErrorTailSpace / \+$/   "highlight any trailing spaces
+" match Error80           /\%>80v.\+/ "highlight anything past 80 in red " doesn't work
 
-if has("gui_running")
-        hi Error80        gui=NONE   guifg=#ffffff   guibg=#6e2e2e
-        hi ErrorLeadSpace gui=NONE   guifg=#ffffff   guibg=#6e2e2e
-        hi ErrorTailSpace gui=NONE   guifg=#ffffff   guibg=#6e2e2e
-else
-        exec "hi Error80        cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(32)
-        exec "hi ErrorLeadSpace cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(33)
-        exec "hi ErrorTailSpace cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(33)
-endif
+"if has("gui_running")
+"        hi Error80        gui=NONE   guifg=#ffffff   guibg=#6e2e2e
+"        hi ErrorLeadSpace gui=NONE   guifg=#ffffff   guibg=#6e2e2e
+"        hi ErrorTailSpace gui=NONE   guifg=#ffffff   guibg=#6e2e2e
+"else
+"        exec "hi Error80        cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(32)
+"        exec "hi ErrorLeadSpace cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(33)
+"        exec "hi ErrorTailSpace cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(33)
+"endif
 
 set formatoptions=tcqlron
 set cinoptions=:0,l1,t0,g0  " configures how to indent parts of code
