@@ -169,6 +169,7 @@ nnoremap <leader>. :lcd %:p:h<CR>
 "set cmdheight=1
 set laststatus=2
 "set statusline=[%l,%v\ %P%M][CWD:\ %{CWD()}][FILE:\ %f]\ %r%h%w\ (%{&ff})\%{fugitive#statusline()}\ %#warningmsg#%{SyntasticStatuslineFlag()}%*
+set statusline=[%l,%v\ %P%M][CWD:\ %{CWD()}][FILE:\ %f]\ %r%h%w\ (%{&ff})\%{fugitive#statusline()}%*
 set showcmd
 set showmode
 

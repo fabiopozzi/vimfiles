@@ -16,3 +16,6 @@
 [submodule "bundle/cscope-quickfix"]
 	path = bundle/cscope-quickfix
 	url = https://github.com/vim-scripts/cscope-quickfix.git
+[submodule "bundle/cvim"]
+	path = bundle/cvim
+	url = https://github.com/HenningM/cvim-pathogen.git
