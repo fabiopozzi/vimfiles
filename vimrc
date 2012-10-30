@@ -31,6 +31,9 @@ set foldenable
 set backupdir=~/.vim/sessions
 set dir=~/.vim/sessions
 
+" Setup command history
+set history=1000
+
 " turn off swapfiles
 "set noswapfile
 
@@ -113,10 +116,9 @@ set titlestring=%F\ -\ Vim
 filetype on
 if has('autocmd')
   filetype plugin indent on
-
   autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cc source ~/vimfiles/bundle/cvim/plugin/c.vim
 endif
-" filetype plugin on
+filetype plugin on
 
 " Disable Toolbar, Scrollbar
 set guioptions-=T
@@ -124,6 +126,12 @@ set guioptions-=r
 
 " Disable the stupid pydoc preview window for the omni completion
 set completeopt-=preview
+
+" omnicompletion setup
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCS
 
 " Disable the blinking cursor.
 set gcr=a:blinkon0
@@ -179,35 +187,21 @@ function! CWD()
 endfunction
 
 " Tab Settings
-set noexpandtab   " use tabs, not spaces
-set tabstop=8     " tabstops of 8
-set shiftwidth=8  " indents of 8
-set textwidth=78  " screen in 80 columns wide, wrap at 78
+"set noexpandtab   " use tabs, not spaces
+"set tabstop=8     " tabstops of 8
+"set shiftwidth=8  " indents of 8
+"set textwidth=78  " screen in 80 columns wide, wrap at 78
 " Go with smartindent if there is no plugin indent file.
-set autoindent smartindent
-set smarttab
+"set autoindent smartindent
+"set smarttab
+
 set backspace=eol,start,indent  " Fix backspace indentation
 "set backspace=indent,eol,start" Fix backspace indentation (original)
-syntax on
+"syntax on
 
 " highlighting for some special keywords (linux kernel specific)
 syn keyword cType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t u_int64_t u_int32_t u_int16_t u_int8_t
 syn keyword cOperator likely unlikely
-
-" Error highlighting doesn't word, disabled for now
-"syn match ErrorLeadSpace /^ \+/   "highlight any leading spaces
-"syn match ErrorTailSpace / \+$/   "highlight any trailing spaces
-" match Error80           /\%>80v.\+/ "highlight anything past 80 in red " doesn't work
-
-"if has("gui_running")
-"        hi Error80        gui=NONE   guifg=#ffffff   guibg=#6e2e2e
-"        hi ErrorLeadSpace gui=NONE   guifg=#ffffff   guibg=#6e2e2e
-"        hi ErrorTailSpace gui=NONE   guifg=#ffffff   guibg=#6e2e2e
-"else
-"        exec "hi Error80        cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(32)
-"        exec "hi ErrorLeadSpace cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(33)
-"        exec "hi ErrorTailSpace cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(33)
-"endif
 
 set formatoptions=tcqlron
 set cinoptions=:0,l1,t0,g0  " configures how to indent parts of code
@@ -300,10 +294,21 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 
+" python support
+" ------------
+autocmd BufNewFile,BufRead *.py setlocal tabstop=2
+autocmd BufNewFile,BufRead *.py setlocal softtabstop=2
+autocmd BufNewFile,BufRead *.py setlocal shiftwidth=2
+autocmd BufNewFile,BufRead *.py setlocal textwidth=80
+autocmd BufNewFile,BufRead *.py setlocal smarttab
+autocmd BufNewFile,BufRead *.py setlocal expandtab
 
 " ruby support
 " ------------
 autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=79
+
+" autocmd BufWritePre *.py normal m`:%s/\s\+$//e `` " doesn't work
+
 
 " vim
 " ---
