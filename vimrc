@@ -22,8 +22,8 @@ set mousehide
 set mousemodel=popup
 
 " Code folding, folded by default
-"set foldmethod=manual
-set foldmethod=syntax
+set foldmethod=manual
+"set foldmethod=syntax
 set foldlevel=99
 set foldenable
 
@@ -296,12 +296,14 @@ let g:miniBufExplModSelTarget = 1
 
 " python support
 " ------------
-autocmd BufNewFile,BufRead *.py setlocal tabstop=2
-autocmd BufNewFile,BufRead *.py setlocal softtabstop=2
-autocmd BufNewFile,BufRead *.py setlocal shiftwidth=2
-autocmd BufNewFile,BufRead *.py setlocal textwidth=80
+autocmd BufNewFile,BufRead *.py setlocal tabstop=4
+autocmd BufNewFile,BufRead *.py setlocal softtabstop=4
+autocmd BufNewFile,BufRead *.py setlocal shiftwidth=4
+"autocmd BufNewFile,BufRead *.py setlocal textwidth=80
 autocmd BufNewFile,BufRead *.py setlocal smarttab
 autocmd BufNewFile,BufRead *.py setlocal expandtab
+
+set expandtab
 
 " ruby support
 " ------------
