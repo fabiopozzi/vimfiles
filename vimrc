@@ -1,21 +1,71 @@
-" vim file configuration
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-
 " No vi compatibility
 set nocompatible
+" theme configuration
+set background=dark
+
+" vim file configuration
+silent! call pathogen#helptags()
+silent! call pathogen#runtime_append_all_bundles()
+
+" Enable filetype plugins and indention
+filetype on
+if has('autocmd')
+  filetype plugin indent on
+  autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cc source ~/vimfiles/bundle/cvim/plugin/c.vim
+endif
+filetype plugin on
+" Enable syntax colors
+syntax enable
+
+" Setup command history
+set history=1000
+
+" Move backup files to ~/.vim/sessions
+set backupdir=~/.vim/sessions
+set dir=~/.vim/sessions
+
+" Set persistent undo (?)
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000
+set undoreload=10000
+
+" Automatic fold view save for files
+au BufWinLeave *.* silent! mkview
+au BufWinEnter *.* silent! loadview
+
+" ui settings
+colorscheme solarized
+set tabpagemax=15 " only 15 tabs
+set showmode      " display the current mode
+set nocursorline
+set showcmd  " show partial commands in status line and selected characters in visual
+
+" Make the command line two lines high and change the statusline display to
+" something that looks useful.
+"set cmdheight=1
+set laststatus=2
+" statusline splitted in parts
+set statusline=%<%f\    " Filename
+set statusline+=%w%h%m%r " Options
+set statusline+=%{fugitive#statusline()} "  Git Hotness
+set statusline+=\ [%{&ff}/%Y]            " filetype
+set statusline+=\ [%{getcwd()}]          " current dir
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+"set statusline=[%l,%v\ %P%M][CWD:\ %{CWD()}][FILE:\ %f]\ %r%h%w\ (%{&ff})\%{fugitive#statusline()}%*
 
 " set line numbers and column indicator on
+"
 set number
 "set ruler
 set nocursorcolumn
-set nocursorline
 syntax sync minlines=5
 noremap <F12> <Esc>:syntax sync fromstart<CR>
 inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
 " Enable mouse everywhere
 set mouse=a
+
 
 " Hide mouse while typing
 set mousehide
@@ -27,19 +77,11 @@ set foldmethod=manual
 set foldlevel=99
 set foldenable
 
-" Move backup files to ~/.vim/sessions
-set backupdir=~/.vim/sessions
-set dir=~/.vim/sessions
 
-" Setup command history
-set history=1000
 
 " turn off swapfiles
 "set noswapfile
 
-" Set persistent undo (?)
-" set undodir=~/.vim/undodir
-" set undofile
 
 " Change <leader> to ',' and <localleader> to '\'
 let mapleader=","
@@ -63,12 +105,7 @@ let g:tagbar_usearrows = 1
 nmap <leader>l :TagbarToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
-" Enable syntax colors
-syntax enable
 
-" theme configuration
-set background=dark
-colorscheme solarized
 
 " font size
 set guifont=Anonymous\ Pro\ 9
@@ -111,14 +148,6 @@ set hidden
 set title
 set titleold="Terminal"
 set titlestring=%F\ -\ Vim
-
-" Enable filetype plugins and indention
-filetype on
-if has('autocmd')
-  filetype plugin indent on
-  autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cc source ~/vimfiles/bundle/cvim/plugin/c.vim
-endif
-filetype plugin on
 
 " Disable Toolbar, Scrollbar
 set guioptions-=T
@@ -171,15 +200,6 @@ nnoremap <leader>q :q<CR>
 
 " Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
-
-" Make the command line two lines high and change the statusline display to
-" something that looks useful.
-"set cmdheight=1
-set laststatus=2
-"set statusline=[%l,%v\ %P%M][CWD:\ %{CWD()}][FILE:\ %f]\ %r%h%w\ (%{&ff})\%{fugitive#statusline()}\ %#warningmsg#%{SyntasticStatuslineFlag()}%*
-set statusline=[%l,%v\ %P%M][CWD:\ %{CWD()}][FILE:\ %f]\ %r%h%w\ (%{&ff})\%{fugitive#statusline()}%*
-set showcmd
-set showmode
 
 function! CWD()
     let curdir = substitute(getcwd(), '/home/wintermute', "~/", "g")
@@ -263,6 +283,7 @@ map! <S-Insert> <MiddleMouse>
 
 " utf-8 default encoding
 set enc=utf-8
+" set encoding=iso-8859-1 
 
 " Prefer unix over windows over os9 formats
 set fileformats=unix,dos,mac
