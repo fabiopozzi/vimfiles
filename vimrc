@@ -30,9 +30,10 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
-" Automatic fold view save for files
-au BufWinLeave *.* silent! mkview
-au BufWinEnter *.* silent! loadview
+" Automatic fold view save for files - disabled, creates a whole lot of files
+" under ~/vimfiles/views
+"au BufWinLeave *.* silent! mkview
+"au BufWinEnter *.* silent! loadview
 
 " ui settings
 colorscheme solarized
@@ -71,11 +72,11 @@ set mouse=a
 set mousehide
 set mousemodel=popup
 
-" Code folding, folded by default
-set foldmethod=manual
-"set foldmethod=syntax
+" Code folding, not folded by default
+"set foldmethod=manual
+set foldmethod=syntax
 set foldlevel=99
-set foldenable
+set nofoldenable
 
 
 
