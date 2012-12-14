@@ -1,9 +1,6 @@
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
-[submodule "bundle/supertab"]
-	path = bundle/supertab
-	url = https://github.com/vim-scripts/SuperTab.git
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
@@ -22,3 +19,6 @@
 [submodule "bundle/zoomwin"]
 	path = bundle/zoomwin
 	url = https://github.com/vim-scripts/ZoomWin.git
+[submodule "bundle/autoload-cscope"]
+	path = bundle/autoload-cscope
+	url = https://github.com/vim-scripts/autoload_cscope.vim
