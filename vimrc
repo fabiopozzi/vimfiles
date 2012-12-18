@@ -88,10 +88,6 @@ set nofoldenable
 let mapleader=","
 let maplocalleader="\\"
 
-noremap <leader>o <Esc>:CommandT<CR>
-noremap <leader>O <Esc>:CommandTFlush<CR>
-noremap <leader>m <Esc>:CommandTBuffer<CR>
-
 "let g:SuperTabDefaultCompletionType = "context"
 
 " ack configuration
