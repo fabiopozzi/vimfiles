@@ -4,7 +4,25 @@ Vimfiles
 These are my personal vimfiles including:including
 
 * the vimrc file
-* the bundle folder containing plugins handled by [pathogen](https://github.com/tpope/vim-pathogen "vim-pathogen")
+* the bundle folder containing plugins handled by [vundle](https://github.com/gmarik/vundle "vundle")
 
-Most the plugins are handled as git submodules, to keep it easy.
+The plugin I use in this configuration are
+* ack.vim
+* autoload\_cscope
+* cscope\-quickfix
+* cscope.vim
+* nerdcommenter
+* nerdtree
+* tagbar
+* vim-colors-solarized
+* vim-fugitive
+* vundle
+* YouCompleteMe
+* ZoomWin
+ 
+All of them are fetched from github repos by bundle, so the plugin links
+can be found inside the vimrc file.
+
+Fabio
+
 
