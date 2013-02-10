@@ -1,5 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/opt/work1/linux_v2x_2.6.38'
 let g:netrw_dirhist_2='/opt/work1/linux-3.0.1'
 let g:netrw_dirhist_3='/home/wintermute/.offlineimap'
+let g:netrw_dirhist_4='/opt/work1/app-audio-strategies/.git'
+let g:netrw_dirhist_5='/opt/work1/v2x_tests/tests'
+let g:netrw_dirhist_6='/opt/work1/v2x_tests/tools_src/poll-test'
+let g:netrw_dirhist_7='/home/wintermute/.offlineimap'
+let g:netrw_dirhist_8='/home/wintermute/work'
