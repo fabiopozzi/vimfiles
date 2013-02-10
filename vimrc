@@ -2,17 +2,30 @@
 set nocompatible
 " theme configuration
 set background=dark
+filetype off
 
-" vim file configuration
-silent! call pathogen#helptags()
-silent! call pathogen#runtime_append_all_bundles()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" My bundles
+Bundle 'mileszs/ack.vim'
+Bundle 'tadpol/autoload_cscope'
+Bundle 'vim-scripts/cscope.vim'
+Bundle 'vim-scripts/cscope-quickfix'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'majutsushi/tagbar'
+Bundle 'tpope/vim-fugitive'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'vim-scripts/ZoomWin'
+
+filetype plugin indent on
 
 " Enable filetype plugins and indention
-filetype on
-if has('autocmd')
-  filetype plugin indent on
-  autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cc source ~/vimfiles/bundle/cvim/plugin/c.vim
-endif
 filetype plugin on
 " Enable syntax colors
 syntax enable
