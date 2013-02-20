@@ -22,6 +22,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-scripts/ZoomWin'
+Bundle 'kien/ctrlp.vim'
 
 filetype plugin indent on
 
@@ -91,7 +92,13 @@ set foldmethod=syntax
 set foldlevel=99
 set nofoldenable
 
-
+" Ctrl-p mappings
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(d|o)$',
+  \ }
 
 " turn off swapfiles
 "set noswapfile
@@ -112,7 +119,6 @@ map <leader>n :NERDTree<CR>
 
 " tagbar configuration
 let g:tagbar_usearrows = 1
-nmap <leader>l :TagbarToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
 
@@ -219,7 +225,7 @@ endfunction
 " Tab Settings
 "set noexpandtab   " use tabs, not spaces
 "set tabstop=8     " tabstops of 8
-"set shiftwidth=8  " indents of 8
+autocmd FileType c setlocal shiftwidth=4 tabstop=4 " indents of 2
 "set textwidth=78  " screen in 80 columns wide, wrap at 78
 " Go with smartindent if there is no plugin indent file.
 "set autoindent smartindent
@@ -232,6 +238,9 @@ set backspace=eol,start,indent  " Fix backspace indentation
 " highlighting for some special keywords (linux kernel specific)
 syn keyword cType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t u_int64_t u_int32_t u_int16_t u_int8_t
 syn keyword cOperator likely unlikely
+
+" highlight column 80
+set colorcolumn=80
 
 set formatoptions=tcqlron
 set cinoptions=:0,l1,t0,g0  " configures how to indent parts of code
@@ -261,11 +270,11 @@ let Tlist_Use_Right_Window = 1
 let TlistHighlightTag = 1
 let Tlist_Width = 40
 let Tlist_GainFocus_On_ToggleOpen = 1
-nnoremap <leader>l :Tlist<CR>
+"nnoremap <leader>l :Tlist<CR>
 
 " Tagbar
 let g:tagbar_usearrows = 1
-nnoremap <leader>l :TagbarToggle<CR>
+"nnoremap <leader>l :TagbarToggle<CR>
 
 " cscope settings
 if has('cscope')
