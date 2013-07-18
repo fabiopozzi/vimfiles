@@ -16,11 +16,11 @@ Bundle 'tadpol/autoload_cscope'
 Bundle 'vim-scripts/cscope.vim'
 Bundle 'vim-scripts/cscope-quickfix'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
+"Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-fugitive'
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'rking/ag.vim'
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'kien/ctrlp.vim'
 
@@ -103,6 +103,9 @@ let g:ctrlp_custom_ignore = {
 " turn off swapfiles
 "set noswapfile
 
+" Autoload Doxygen highlighting
+let g:load_doxygen_syntax=1
+
 
 " Change <leader> to ',' and <localleader> to '\'
 let mapleader=","
@@ -115,13 +118,20 @@ let g:ackprg="ack -H --nocolor --nogroup --column"
 map <leader>a :Ack! 
 
 " NerdTree bindings
-map <leader>n :NERDTree<CR>
+"map <leader>n :NERDTree<CR>
 
 " tagbar configuration
 let g:tagbar_usearrows = 1
 nmap <F8> :TagbarToggle<CR>
 
+" I can type :help on my own, thanks.
+noremap <F1> <Esc>
 
+" remap move between splits
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " font size
 set guifont=Anonymous\ Pro\ 9
