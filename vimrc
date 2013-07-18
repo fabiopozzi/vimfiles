@@ -11,7 +11,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My bundles
-Bundle 'mileszs/ack.vim'
 Bundle 'tadpol/autoload_cscope'
 Bundle 'vim-scripts/cscope.vim'
 Bundle 'vim-scripts/cscope-quickfix'
@@ -114,8 +113,7 @@ let maplocalleader="\\"
 "let g:SuperTabDefaultCompletionType = "context"
 
 " ack configuration
-let g:ackprg="ack -H --nocolor --nogroup --column"
-map <leader>a :Ack! 
+map <leader>a :Ag! 
 
 " NerdTree bindings
 "map <leader>n :NERDTree<CR>
