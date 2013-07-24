@@ -22,6 +22,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'rking/ag.vim'
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'kien/ctrlp.vim'
+Bundle 'sjl/gundo.vim'
 
 filetype plugin indent on
 
@@ -77,6 +78,9 @@ syntax sync minlines=5
 noremap <F12> <Esc>:syntax sync fromstart<CR>
 inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
+"Gundo keymap
+nnoremap <F5> :GundoToggle<CR>
+
 " Enable mouse everywhere
 set mouse=a
 
@@ -86,10 +90,10 @@ set mousehide
 set mousemodel=popup
 
 " Code folding, not folded by default
-"set foldmethod=manual
-set foldmethod=syntax
+set foldmethod=manual
+"set foldmethod=syntax
 set foldlevel=99
-set nofoldenable
+"set nofoldenable
 
 " Ctrl-p mappings
 let g:ctrlp_map = '<c-p>'
