@@ -15,7 +15,6 @@ Bundle 'tadpol/autoload_cscope'
 Bundle 'vim-scripts/cscope.vim'
 Bundle 'vim-scripts/cscope-quickfix'
 Bundle 'scrooloose/nerdcommenter'
-"Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-fugitive'
@@ -47,7 +46,9 @@ set undoreload=10000
 " Automatic fold view save for files - disabled, creates a whole lot of files
 " under ~/vimfiles/views
 "au BufWinLeave *.* silent! mkview
-"au BufWinEnter *.* silent! loadview
+"
+" Automatic fold view load if exists
+au BufWinEnter *.* silent! loadview
 
 " ui settings
 colorscheme solarized
