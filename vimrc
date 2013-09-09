@@ -15,13 +15,13 @@ Bundle 'tadpol/autoload_cscope'
 Bundle 'vim-scripts/cscope.vim'
 Bundle 'vim-scripts/cscope-quickfix'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-fugitive'
 Bundle 'rking/ag.vim'
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
+Bundle 'vim-scripts/matchit.zip'
 
 filetype plugin indent on
 
@@ -43,15 +43,12 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
-" Automatic fold view save for files - disabled, creates a whole lot of files
-" under ~/vimfiles/views
+" Automatic fold view save for files - disabled, it doesn't work correctly
 "au BufWinLeave *.* silent! mkview
-"
-" Automatic fold view load if exists
-au BufWinEnter *.* silent! loadview
+"au BufWinEnter *.* silent! loadview
 
 " ui settings
-colorscheme solarized
+colorscheme desert
 set tabpagemax=15 " only 15 tabs
 set showmode      " display the current mode
 set nocursorline
