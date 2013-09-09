@@ -1,7 +1,7 @@
 Vimfiles
 =======
 
-These are my personal vimfiles including:including
+These are my personal vimfiles, including:
 
 * the vimrc file
 * the bundle folder containing plugins handled by [vundle](https://github.com/gmarik/vundle "vundle")
