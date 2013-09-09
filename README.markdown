@@ -14,11 +14,12 @@ The plugin I use in this configuration are
 * nerdcommenter
 * nerdtree
 * tagbar
-* vim-colors-solarized
+* matchit
 * vim-fugitive
 * vundle
-* YouCompleteMe
 * ZoomWin
+* ctrlp
+* gundo
  
 All of them are fetched from github repos by bundle, so the plugin links
 can be found inside the vimrc file.
