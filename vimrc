@@ -13,7 +13,7 @@ Bundle 'gmarik/vundle'
 " My bundles
 Bundle 'tadpol/autoload_cscope'
 Bundle 'vim-scripts/cscope.vim'
-Bundle 'vim-scripts/cscope-quickfix'
+Bundle 'fabiopozzi/cscope-quickfix'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-fugitive'
