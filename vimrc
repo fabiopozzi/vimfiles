@@ -48,7 +48,8 @@ set undoreload=10000
 "au BufWinEnter *.* silent! loadview
 
 " ui settings
-colorscheme desert
+"colorscheme solarized
+colorscheme molokai
 set tabpagemax=15 " only 15 tabs
 set showmode      " display the current mode
 set nocursorline
@@ -101,6 +102,7 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(d|o)$',
   \ }
 
+
 " turn off swapfiles
 "set noswapfile
 
@@ -117,6 +119,8 @@ let maplocalleader="\\"
 " ack configuration
 map <leader>a :Ag! 
 
+" ,z opens CtrlP buffer
+map <leader>b :CtrlPBuffer<CR>
 " NerdTree bindings
 "map <leader>n :NERDTree<CR>
 
@@ -140,25 +144,25 @@ set guifont=Anonymous\ Pro\ 9
 autocmd BufEnter * :syntax sync fromstart
 
 " Left/Right arrow keys change buffers in all modes
-noremap <Left> <Esc>:tabp<CR>
-inoremap <Left> <Esc>:tabp<CR>
-nnoremap <Left> <Esc>:tabp<CR>
-vnoremap <Left> <Esc>:tabp<CR>
+"noremap <Left> <Esc>:tabp<CR>
+"inoremap <Left> <Esc>:tabp<CR>
+"nnoremap <Left> <Esc>:tabp<CR>
+"vnoremap <Left> <Esc>:tabp<CR>
 
-noremap <Right> <Esc>:tabn<CR>
-inoremap <Right> <Esc>:tabn<CR>
-nnoremap <Right> <Esc>:tabn<CR>
-vnoremap <Right> <Esc>:tabn<CR>
+"noremap <Right> <Esc>:tabn<CR>
+"inoremap <Right> <Esc>:tabn<CR>
+"nnoremap <Right> <Esc>:tabn<CR>
+"vnoremap <Right> <Esc>:tabn<CR>
 
 " Disable up/down arrow keys
-"noremap <up> <nop>
-"noremap <down> <nop>
-"nnoremap <up> <nop>
-"nnoremap <down> <nop>
-"vnoremap <up> <nop>
-"vnoremap <down> <nop>
-"inoremap <up> <nop>
-"inoremap <down> <nop>
+noremap <up> <nop>
+noremap <down> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+vnoremap <up> <nop>
+vnoremap <down> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
 
 " Remember cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -209,8 +213,12 @@ set showmatch
 " Hide matches on <leader>space
 nnoremap <leader><space> :nohlsearch<cr>
 
-" Remove trailing whitespace on <leader>S
-nnoremap <leader>S :%s/\s\+$//<cr>:let @/='<CR>
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 " <leader>v selects the just pasted text
 nnoremap <leader>v V`]'
@@ -296,10 +304,10 @@ if has('cscope')
 
   cnoreabbrev csa cs add
   cnoreabbrev csf cs find
-  cnoreabbrev csk cs kill 
+  cnoreabbrev csk cs kill
   cnoreabbrev csr cs reset
-  cnoreabbrev csh cs show 
-  cnoreabbrev csh cs help 
+  cnoreabbrev csh cs show
+  cnoreabbrev csh cs help
 
   command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
 endif
@@ -312,7 +320,7 @@ map! <S-Insert> <MiddleMouse>
 
 " utf-8 default encoding
 set enc=utf-8
-" set encoding=iso-8859-1 
+" set encoding=iso-8859-1
 
 " Prefer unix over windows over os9 formats
 set fileformats=unix,dos,mac
