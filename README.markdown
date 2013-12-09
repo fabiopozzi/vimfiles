@@ -4,7 +4,8 @@ Vimfiles
 These are my personal vimfiles, including:
 
 * the vimrc file
-* the bundle folder containing plugins handled by [vundle](https://github.com/gmarik/vundle "vundle")
+* the bundle folder containing plugins 
+  handled by [vundle](https://github.com/gmarik/vundle "vundle")
 
 The plugin I use in this configuration are
 * ack.vim
@@ -20,9 +21,9 @@ The plugin I use in this configuration are
 * ZoomWin
 * ctrlp
 * gundo
- 
-All of them are fetched from github repos by bundle, so the plugin links
-can be found inside the vimrc file.
+
+All of them are fetched from github repos by vundle thus all links to the
+plugins I use can be found inside the vimrc file.
 
 Fabio
 
