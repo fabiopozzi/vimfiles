@@ -15,6 +15,8 @@ Bundle 'tadpol/autoload_cscope'
 Bundle 'vim-scripts/cscope.vim'
 Bundle 'fabiopozzi/cscope-quickfix'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'jlanzarotta/bufexplorer'
 Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-fugitive'
 Bundle 'rking/ag.vim'
@@ -122,7 +124,7 @@ map <leader>a :Ag!
 " ,z opens CtrlP buffer
 map <leader>b :CtrlPBuffer<CR>
 " NerdTree bindings
-"map <leader>n :NERDTree<CR>
+map <leader>n :NERDTree<CR>
 
 " tagbar configuration
 let g:tagbar_usearrows = 1
@@ -144,15 +146,15 @@ set guifont=Anonymous\ Pro\ 9
 autocmd BufEnter * :syntax sync fromstart
 
 " Left/Right arrow keys change buffers in all modes
-"noremap <Left> <Esc>:tabp<CR>
-"inoremap <Left> <Esc>:tabp<CR>
-"nnoremap <Left> <Esc>:tabp<CR>
-"vnoremap <Left> <Esc>:tabp<CR>
+noremap <Left> <Esc>:bp<CR>
+inoremap <Left> <Esc>:bp<CR>
+nnoremap <Left> <Esc>:bp<CR>
+vnoremap <Left> <Esc>:bp<CR>
 
-"noremap <Right> <Esc>:tabn<CR>
-"inoremap <Right> <Esc>:tabn<CR>
-"nnoremap <Right> <Esc>:tabn<CR>
-"vnoremap <Right> <Esc>:tabn<CR>
+noremap <Right> <Esc>:bn<CR>
+inoremap <Right> <Esc>:bn<CR>
+nnoremap <Right> <Esc>:bn<CR>
+vnoremap <Right> <Esc>:bn<CR>
 
 " Disable up/down arrow keys
 noremap <up> <nop>
