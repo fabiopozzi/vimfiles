@@ -23,7 +23,7 @@ Bundle 'rking/ag.vim'
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
-Bundle 'vim-scripts/matchit.zip'
+Bundle 'bling/vim-airline'
 
 filetype plugin indent on
 
@@ -146,7 +146,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " font size
-set guifont=Anonymous\ Pro\ 9
+set anti enc=utf-8
+set guifont=Inconsolata\ for\ Powerline\ 11
+
+let g:airline_powerline_fonts = 1
 
 " The PC is fast enough, do syntax highlight syncing from start
 autocmd BufEnter * :syntax sync fromstart
