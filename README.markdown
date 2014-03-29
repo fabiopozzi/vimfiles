@@ -15,12 +15,12 @@ The plugin I use in this configuration are
 * nerdcommenter
 * nerdtree
 * tagbar
-* matchit
 * vim-fugitive
 * vundle
 * ZoomWin
 * ctrlp
 * gundo
+* vim-airline
 
 All of them are fetched from github repos by vundle thus all links to the
 plugins I use can be found inside the vimrc file.
