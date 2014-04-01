@@ -24,6 +24,7 @@ Bundle 'vim-scripts/ZoomWin'
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'bling/vim-airline'
+Bundle 'terryma/vim-expand-region'
 
 filetype plugin indent on
 
@@ -118,7 +119,7 @@ let g:load_doxygen_syntax=1
 
 
 " Change <leader> to ',' and <localleader> to '\'
-let mapleader=","
+let mapleader="\<Space>"
 let maplocalleader="\\"
 
 "let g:SuperTabDefaultCompletionType = "context"
@@ -126,7 +127,7 @@ let maplocalleader="\\"
 " ack configuration
 map <leader>a :Ag! 
 
-" ,z opens CtrlP buffer
+" ,b opens CtrlP buffer
 map <leader>b :CtrlPBuffer<CR>
 " NerdTree bindings
 map <leader>n :NERDTree<CR>
@@ -221,8 +222,8 @@ set hlsearch
 set incsearch
 set showmatch
 
-" Hide matches on <leader>space
-nnoremap <leader><space> :nohlsearch<cr>
+" Hide matches on <leader>s
+nnoremap <leader>s :nohlsearch<cr>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -235,8 +236,17 @@ autocmd BufWinLeave * call clearmatches()
 nnoremap <leader>v V`]'
 
 " Copy/Paste to and from Desktop Environment
-noremap <leader>yy "+y
-noremap <leader>pp "+gP
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" Stop that stupid window from popping up
+map q: :q
+"noremap <leader>yy "+y
+"noremap <leader>pp "+gP
 " paste multiple times
 "noremap p pgvy
 
@@ -250,6 +260,19 @@ function! CWD()
     let curdir = substitute(getcwd(), '/home/wintermute', "~/", "g")
     return curdir
 endfunction
+
+" NERDcommenter remaps
+map <Leader>c <plug>NERDCommenterInvert
+map <Leader>x <plug>NERDCommenterToggle
+
+" vim expand region mappings
+
+nmap <Leader><Leader> V
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+" fast save
+nnoremap <Leader>w :w<CR>
 
 " Tab Settings
 "set noexpandtab   " use tabs, not spaces
@@ -349,13 +372,13 @@ endif
 let g:netrw_list_hide='^\.,.\(pyc\|pyo\|o\)$'
 
 " Split window management
-nnoremap <leader>w <C-w>v<C-w>l
-nnoremap <leader>W <C-w>s
-nnoremap <leader>s :new<CR>
+"nnoremap <leader>w <C-w>v<C-w>l
+"nnoremap <leader>W <C-w>s
+"nnoremap <leader>s :new<CR>
 
 " open tabs using Ctrl-t
-:nmap <C-t> :tabnew<CR>
-:imap <C-t> <Esc>:tabnew<CR>
+":nmap <C-t> :tabnew<CR>
+":imap <C-t> <Esc>:tabnew<CR>
 
 
 let g:miniBufExplMapWindowNavVim = 1
