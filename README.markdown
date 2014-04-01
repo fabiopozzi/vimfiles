@@ -8,12 +8,12 @@ These are my personal vimfiles, including:
   handled by [vundle](https://github.com/gmarik/vundle "vundle")
 
 The plugin I use in this configuration are
-* ack.vim
+* ag.vim
 * autoload\_cscope
 * cscope\-quickfix
 * cscope.vim
-* nerdcommenter
-* nerdtree
+* NERDcommenter
+* NERDtree
 * tagbar
 * vim-fugitive
 * vundle
