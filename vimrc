@@ -148,9 +148,16 @@ nnoremap <C-l> <C-w>l
 
 " font size
 set anti enc=utf-8
-set guifont=Inconsolata\ for\ Powerline\ 11
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ for\ Powerline\ 10
+  else
+    set guifont=Inconsolata\ for\ Powerline\ 11
+  endif
+endif
 
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " The PC is fast enough, do syntax highlight syncing from start
 autocmd BufEnter * :syntax sync fromstart
@@ -245,6 +252,9 @@ vmap <Leader>P "+P
 
 " Stop that stupid window from popping up
 map q: :q
+" alias Wq to wq
+command! Wq wq
+
 "noremap <leader>yy "+y
 "noremap <leader>pp "+gP
 " paste multiple times
