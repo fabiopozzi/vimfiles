@@ -20,11 +20,11 @@ Bundle 'jlanzarotta/bufexplorer'
 Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-fugitive'
 Bundle 'rking/ag.vim'
-Bundle 'vim-scripts/ZoomWin'
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'bling/vim-airline'
 Bundle 'terryma/vim-expand-region'
+Bundle 'airblade/vim-gitgutter'
 
 filetype plugin indent on
 
