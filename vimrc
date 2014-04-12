@@ -25,6 +25,7 @@ Bundle 'sjl/gundo.vim'
 Bundle 'bling/vim-airline'
 Bundle 'terryma/vim-expand-region'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'embear/vim-localvimrc'
 
 filetype plugin indent on
 
