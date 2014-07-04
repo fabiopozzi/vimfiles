@@ -4,35 +4,29 @@ set nocompatible
 set background=dark
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " My bundles
-Bundle 'tadpol/autoload_cscope'
-Bundle 'vim-scripts/cscope.vim'
-Bundle 'fabiopozzi/cscope-quickfix'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jlanzarotta/bufexplorer'
-Bundle 'majutsushi/tagbar'
-Bundle 'tpope/vim-fugitive'
-Bundle 'rking/ag.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'sjl/gundo.vim'
-Bundle 'bling/vim-airline'
-Bundle 'terryma/vim-expand-region'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'embear/vim-localvimrc'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-fugitive'
+Plugin 'rking/ag.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline'
+Plugin 'embear/vim-localvimrc'
 
+call vundle#end()
 filetype plugin indent on
-
-" Enable filetype plugins and indention
-filetype plugin on
-" Enable syntax colors
-syntax enable
+"filetype off
+"filetype plugin indent off
+"set runtimepath+=/usr/local/go/misc/vim
+"filetype plugin indent on
+syntax on
 
 " Setup command history
 set history=1000
@@ -71,7 +65,7 @@ set laststatus=2
 " statusline splitted in parts
 set statusline=%<%f\    " Filename
 set statusline+=%w%h%m%r " Options
-set statusline+=%{fugitive#statusline()} "  Git Hotness
+"set statusline+=%{fugitive#statusline()} "  Git Hotness
 set statusline+=\ [%{&ff}/%Y]            " filetype
 set statusline+=\ [%{getcwd()}]          " current dir
 set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
@@ -87,7 +81,7 @@ noremap <F12> <Esc>:syntax sync fromstart<CR>
 inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
 "Gundo keymap
-nnoremap <F5> :GundoToggle<CR>
+"nnoremap <F5> :GundoToggle<CR>
 
 " Enable mouse everywhere
 set mouse=a
@@ -149,13 +143,6 @@ nnoremap <C-l> <C-w>l
 
 " font size
 set anti enc=utf-8
-if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=Inconsolata\ for\ Powerline\ 10
-  else
-    set guifont=Inconsolata\ for\ Powerline\ 11
-  endif
-endif
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -324,7 +311,7 @@ nmap <C-J> vip=     "forces (re)indentation of a block
 
 " Taglist
 let Tlist_Compact_Format = 1
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 let Tlist_Enable_Fold_Column = 0
 let Tlist_Exist_OnlyWindow = 1
 let Tlist_File_Fold_Auto_Close = 0
@@ -337,6 +324,8 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 
 " Tagbar
 let g:tagbar_usearrows = 1
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+let g:tagbar_width=26
 "nnoremap <leader>l :TagbarToggle<CR>
 
 " cscope settings
