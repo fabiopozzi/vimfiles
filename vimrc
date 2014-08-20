@@ -25,7 +25,7 @@ Bundle 'sjl/gundo.vim'
 Bundle 'bling/vim-airline'
 Bundle 'terryma/vim-expand-region'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'embear/vim-localvimrc'
+Bundle 'MarcWeber/vim-addon-local-vimrc'
 
 filetype plugin indent on
 
@@ -108,7 +108,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(d|o)$',
+  \ 'file': '\v\.(d|o|s|i)$',
   \ }
 
 
@@ -149,13 +149,7 @@ nnoremap <C-l> <C-w>l
 
 " font size
 set anti enc=utf-8
-if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=Inconsolata\ for\ Powerline\ 10
-  else
-    set guifont=Inconsolata\ for\ Powerline\ 11
-  endif
-endif
+set guifont=Inconsolata\ for\ Powerline\ 10
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -426,3 +420,4 @@ set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
 "switch back to current file and closes fugitive buffer
 nnoremap <Leader>gD :diffoff!<cr><c-w>h:bd<cr>
 
+let g:local_vimrc = {'names':['.vimrc'],'hash_fun':'LVRHashOfFile'}
