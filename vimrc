@@ -56,7 +56,8 @@ if has("gui_running")
   "colorscheme solarized
   colorscheme molokai
 else
-  colorscheme desert
+  "colorscheme desert
+  colorscheme darkblue
 endif
 
 set tabpagemax=15 " only 15 tabs
@@ -130,8 +131,8 @@ map <leader>a :Ag!
 
 " ,b opens CtrlP buffer
 map <leader>b :CtrlPBuffer<CR>
-" NerdTree bindings
-map <leader>n :NERDTree<CR>
+" go to next buffer
+map <leader>n :bn<CR>
 
 " tagbar configuration
 let g:tagbar_usearrows = 1
@@ -157,6 +158,9 @@ let g:airline#extensions#tabline#enabled = 1
 " The PC is fast enough, do syntax highlight syncing from start
 autocmd BufEnter * :syntax sync fromstart
 
+" Buffers - explore/next/previous: Alt-F12, F12, Shift-F12.
+nnoremap <silent> <F12> :BufExplorer<CR>
+
 " Left/Right arrow keys change buffers in all modes
 noremap <Left> <Esc>:bp<CR>
 inoremap <Left> <Esc>:bp<CR>
@@ -169,14 +173,14 @@ nnoremap <Right> <Esc>:bn<CR>
 vnoremap <Right> <Esc>:bn<CR>
 
 " Disable up/down arrow keys
-noremap <up> <nop>
-noremap <down> <nop>
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-vnoremap <up> <nop>
-vnoremap <down> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
+"noremap <up> <nop>
+"noremap <down> <nop>
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"vnoremap <up> <nop>
+"vnoremap <down> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
 
 " Remember cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -213,8 +217,9 @@ set ttyfast
 
 " Customize the wildmenu
 set wildmenu
-set wildignore=*.dll,*.o,*.pyc,*.bak,*.exe,*.jpg,*.jpeg,*.png,*.gif,*$py.class,*.class
+set wildignore=*.o,*.pyc,*.bak,*.exe,*.i,*.s,*.d
 set wildmode=list:full
+set wildchar=<Tab> wildmenu wildmode=full
 
 " Global by default
 set gdefault
@@ -249,6 +254,7 @@ vmap <Leader>P "+P
 map q: :q
 " alias Wq to wq
 command! Wq wq
+command! Q q
 
 "noremap <leader>yy "+y
 "noremap <leader>pp "+gP
@@ -305,11 +311,6 @@ set cinoptions=:0,l1,t0,g0  " configures how to indent parts of code
 " Some indenting macros
 nmap <C-J> vip=     "forces (re)indentation of a block
 
-" paste settings
-:map <F10> :set paste<CR>
-:map <F11> :set nopaste<CR>
-:imap <F10> <C-O>:set paste<CR>
-
 " command to build a c file
 "set makeprg=gcc\ -o\ %<\ %
 
@@ -353,10 +354,6 @@ endif
 
 " Gvim Settings
 
-" Make shift-insert work like in Xterm
-map <S-Insert> <MiddleMouse>
-map! <S-Insert> <MiddleMouse>
-
 " utf-8 default encoding
 set enc=utf-8
 " set encoding=iso-8859-1
@@ -385,11 +382,13 @@ let g:netrw_list_hide='^\.,.\(pyc\|pyo\|o\)$'
 ":nmap <C-t> :tabnew<CR>
 ":imap <C-t> <Esc>:tabnew<CR>
 
+" Mappings to access buffers (don't use "\p" because a
+" delay before pressing "p" would accidentally paste).
+" \l       : list buffers
+nnoremap <Leader>l :ls<CR>
 
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
+" It's useful to show the buffer number in the status line.
+"set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 " python support
 " ------------
