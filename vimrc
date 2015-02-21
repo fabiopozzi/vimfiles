@@ -15,22 +15,21 @@ Bundle 'tadpol/autoload_cscope'
 Bundle 'vim-scripts/cscope.vim'
 Bundle 'fabiopozzi/cscope-quickfix'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'majutsushi/tagbar'
-Bundle 'tpope/vim-fugitive'
+"Bundle 'tpope/vim-fugitive'
 Bundle 'rking/ag.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'bling/vim-airline'
 Bundle 'terryma/vim-expand-region'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'MarcWeber/vim-addon-local-vimrc'
+Bundle 'morhetz/gruvbox'
 
-filetype plugin indent on
+"filetype plugin indent on
 
 " Enable filetype plugins and indention
-filetype plugin on
+"filetype plugin on
 " Enable syntax colors
 syntax enable
 
@@ -52,13 +51,9 @@ set undoreload=10000
 "au BufWinEnter *.* silent! loadview
 
 " ui settings
-if has("gui_running")
-  "colorscheme solarized
-  colorscheme molokai
-else
-  "colorscheme desert
-  colorscheme darkblue
-endif
+"colorscheme desert
+"colorscheme darkblue
+colorscheme gruvbox
 
 set tabpagemax=15 " only 15 tabs
 set showmode      " display the current mode
@@ -93,6 +88,8 @@ nnoremap <F5> :GundoToggle<CR>
 " Enable mouse everywhere
 set mouse=a
 
+" define custom colors for C function
+hi cCustomFunc cterm=bold ctermfg=DarkBlue
 
 " Hide mouse while typing
 set mousehide
@@ -286,12 +283,18 @@ vmap <C-v> <Plug>(expand_region_shrink)
 nnoremap <Leader>w :w<CR>
 
 " Tab Settings
-"set noexpandtab   " use tabs, not spaces
-"set tabstop=8     " tabstops of 8
-autocmd FileType c setlocal shiftwidth=4 tabstop=4 " indents of 2
+set noexpandtab   " use tabs
+set tabstop=8     " tabstops of 8
+set softtabstop=0
+set shiftwidth=4
+
+set list
+set listchars=tab:▸\ ,eol:¬
+
+"autocmd FileType c setlocal shiftwidth=4 tabstop=8
 "set textwidth=78  " screen in 80 columns wide, wrap at 78
 " Go with smartindent if there is no plugin indent file.
-"set autoindent smartindent
+set autoindent " smartindent disabled
 "set smarttab
 
 set backspace=eol,start,indent  " Fix backspace indentation
@@ -306,7 +309,7 @@ syn keyword cOperator likely unlikely
 set colorcolumn=80
 
 set formatoptions=tcqlron
-set cinoptions=:0,l1,t0,g0  " configures how to indent parts of code
+"set cinoptions=:0,l1,t0,g0  " configures how to indent parts of code
 
 " Some indenting macros
 nmap <C-J> vip=     "forces (re)indentation of a block
@@ -399,7 +402,6 @@ autocmd BufNewFile,BufRead *.py setlocal shiftwidth=4
 autocmd BufNewFile,BufRead *.py setlocal smarttab
 autocmd BufNewFile,BufRead *.py setlocal expandtab
 
-set expandtab
 
 " ruby support
 " ------------
