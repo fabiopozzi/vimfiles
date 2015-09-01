@@ -1,32 +1,38 @@
+scriptencoding utf-8
+set encoding=utf-8
 " No vi compatibility
 set nocompatible
 " theme configuration
 set background=dark
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
 " let Vundle manage Vundle
-Plugin 'gmarik/Vundle.vim'
+Bundle 'gmarik/vundle'
 
 " My bundles
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'majutsushi/tagbar'
-Plugin 'tpope/vim-fugitive'
-Plugin 'rking/ag.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'bling/vim-airline'
-Plugin 'embear/vim-localvimrc'
+Bundle 'tadpol/autoload_cscope'
+Bundle 'vim-scripts/cscope.vim'
+Bundle 'fabiopozzi/cscope-quickfix'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'jlanzarotta/bufexplorer'
+Bundle 'majutsushi/tagbar'
+"Bundle 'tpope/vim-fugitive'
+Bundle 'rking/ag.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'bling/vim-airline'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'fatih/vim-go'
 
-call vundle#end()
 filetype plugin indent on
-"filetype off
-"filetype plugin indent off
-"set runtimepath+=/usr/local/go/misc/vim
-"filetype plugin indent on
-syntax on
+
+" Enable filetype plugins and indention
+filetype plugin on
+" Enable syntax colors
+syntax enable
 
 " Setup command history
 set history=1000
@@ -46,12 +52,9 @@ set undoreload=10000
 "au BufWinEnter *.* silent! loadview
 
 " ui settings
-if has("gui_running")
-  "colorscheme solarized
-  colorscheme molokai
-else
-  colorscheme desert
-endif
+"colorscheme desert
+"colorscheme darkblue
+colorscheme gruvbox
 
 set tabpagemax=15 " only 15 tabs
 set showmode      " display the current mode
@@ -65,7 +68,7 @@ set laststatus=2
 " statusline splitted in parts
 set statusline=%<%f\    " Filename
 set statusline+=%w%h%m%r " Options
-"set statusline+=%{fugitive#statusline()} "  Git Hotness
+set statusline+=%{fugitive#statusline()} "  Git Hotness
 set statusline+=\ [%{&ff}/%Y]            " filetype
 set statusline+=\ [%{getcwd()}]          " current dir
 set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
@@ -86,6 +89,8 @@ inoremap <F12> <C-o>:syntax sync fromstart<CR>
 " Enable mouse everywhere
 set mouse=a
 
+" define custom colors for C function
+hi cCustomFunc cterm=bold ctermfg=DarkBlue
 
 " Hide mouse while typing
 set mousehide
@@ -102,16 +107,20 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(d|o)$',
+  \ 'file': '\v\.(d|o|s|i)$',
   \ }
 
-
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 " turn off swapfiles
 "set noswapfile
 
 " Autoload Doxygen highlighting
 let g:load_doxygen_syntax=1
 
+set list!
+"set listchars=tab:▸\ ,eol:¬
+set listchars=trail:·,precedes:«,extends:»,tab:▸\ ,eol:¬
+set vb t_vb= " Turn off visual bell, error flash
 
 " Change <leader> to ',' and <localleader> to '\'
 let mapleader="\<Space>"
@@ -143,6 +152,7 @@ nnoremap <C-l> <C-w>l
 
 " font size
 set anti enc=utf-8
+set guifont=Inconsolata\ for\ Powerline\ 16
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -150,26 +160,29 @@ let g:airline#extensions#tabline#enabled = 1
 " The PC is fast enough, do syntax highlight syncing from start
 autocmd BufEnter * :syntax sync fromstart
 
-" Left/Right arrow keys change buffers in all modes
-noremap <Left> <Esc>:bp<CR>
-inoremap <Left> <Esc>:bp<CR>
-nnoremap <Left> <Esc>:bp<CR>
-vnoremap <Left> <Esc>:bp<CR>
+" Buffers - explore/next/previous: Alt-F12, F12, Shift-F12.
+nnoremap <silent> <F12> :BufExplorer<CR>
 
-noremap <Right> <Esc>:bn<CR>
-inoremap <Right> <Esc>:bn<CR>
-nnoremap <Right> <Esc>:bn<CR>
-vnoremap <Right> <Esc>:bn<CR>
+" Left/Right arrow keys change buffers in all modes
+"noremap <Left> <Esc>:bp<CR>
+"inoremap <Left> <Esc>:bp<CR>
+"nnoremap <Left> <Esc>:bp<CR>
+"vnoremap <Left> <Esc>:bp<CR>
+
+"noremap <Right> <Esc>:bn<CR>
+"inoremap <Right> <Esc>:bn<CR>
+"nnoremap <Right> <Esc>:bn<CR>
+"vnoremap <Right> <Esc>:bn<CR>
 
 " Disable up/down arrow keys
-noremap <up> <nop>
-noremap <down> <nop>
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-vnoremap <up> <nop>
-vnoremap <down> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
+"noremap <up> <nop>
+"noremap <down> <nop>
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"vnoremap <up> <nop>
+"vnoremap <down> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
 
 " Remember cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -206,8 +219,9 @@ set ttyfast
 
 " Customize the wildmenu
 set wildmenu
-set wildignore=*.dll,*.o,*.pyc,*.bak,*.exe,*.jpg,*.jpeg,*.png,*.gif,*$py.class,*.class
+set wildignore=*.o,*.pyc,*.bak,*.exe,*.i,*.s,*.d
 set wildmode=list:full
+set wildchar=<Tab> wildmenu wildmode=full
 
 " Global by default
 set gdefault
@@ -241,7 +255,8 @@ vmap <Leader>P "+P
 " Stop that stupid window from popping up
 map q: :q
 " alias Wq to wq
-command! Wq wq
+"command! Wq wq
+"command! Q q
 
 "noremap <leader>yy "+y
 "noremap <leader>pp "+gP
@@ -273,9 +288,10 @@ vmap <C-v> <Plug>(expand_region_shrink)
 nnoremap <Leader>w :w<CR>
 
 " Tab Settings
-"set noexpandtab   " use tabs, not spaces
-"set tabstop=8     " tabstops of 8
-autocmd FileType c setlocal shiftwidth=4 tabstop=4 " indents of 2
+set tabstop=8     " tabstops of 8
+set softtabstop=8
+set shiftwidth=8
+set noexpandtab   " use tabs, not spaces
 "set textwidth=78  " screen in 80 columns wide, wrap at 78
 " Go with smartindent if there is no plugin indent file.
 "set autoindent smartindent
@@ -302,7 +318,6 @@ nmap <C-J> vip=     "forces (re)indentation of a block
 :map <F10> :set paste<CR>
 :map <F11> :set nopaste<CR>
 :imap <F10> <C-O>:set paste<CR>
-
 " command to build a c file
 "set makeprg=gcc\ -o\ %<\ %
 
@@ -311,7 +326,7 @@ nmap <C-J> vip=     "forces (re)indentation of a block
 
 " Taglist
 let Tlist_Compact_Format = 1
-let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 let Tlist_Enable_Fold_Column = 0
 let Tlist_Exist_OnlyWindow = 1
 let Tlist_File_Fold_Auto_Close = 0
@@ -324,9 +339,8 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 
 " Tagbar
 let g:tagbar_usearrows = 1
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'
-let g:tagbar_width=26
 "nnoremap <leader>l :TagbarToggle<CR>
+
 
 " cscope settings
 if has('cscope')
@@ -347,10 +361,6 @@ if has('cscope')
 endif
 
 " Gvim Settings
-
-" Make shift-insert work like in Xterm
-map <S-Insert> <MiddleMouse>
-map! <S-Insert> <MiddleMouse>
 
 " utf-8 default encoding
 set enc=utf-8
@@ -380,11 +390,13 @@ let g:netrw_list_hide='^\.,.\(pyc\|pyo\|o\)$'
 ":nmap <C-t> :tabnew<CR>
 ":imap <C-t> <Esc>:tabnew<CR>
 
+" Mappings to access buffers (don't use "\p" because a
+" delay before pressing "p" would accidentally paste).
+" \l       : list buffers
+nnoremap <Leader>l :ls<CR>
 
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
+" It's useful to show the buffer number in the status line.
+"set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 " python support
 " ------------
@@ -395,7 +407,6 @@ autocmd BufNewFile,BufRead *.py setlocal shiftwidth=4
 autocmd BufNewFile,BufRead *.py setlocal smarttab
 autocmd BufNewFile,BufRead *.py setlocal expandtab
 
-set expandtab
 
 " ruby support
 " ------------
