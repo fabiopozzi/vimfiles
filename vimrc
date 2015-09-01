@@ -17,16 +17,15 @@ Bundle 'tadpol/autoload_cscope'
 Bundle 'vim-scripts/cscope.vim'
 Bundle 'fabiopozzi/cscope-quickfix'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'majutsushi/tagbar'
 "Bundle 'tpope/vim-fugitive'
 Bundle 'rking/ag.vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'sjl/gundo.vim'
 Bundle 'bling/vim-airline'
-Bundle 'terryma/vim-expand-region'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'morhetz/gruvbox'
+Bundle 'fatih/vim-go'
 
 "filetype plugin indent on
 
