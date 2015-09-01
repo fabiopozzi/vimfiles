@@ -152,7 +152,7 @@ nnoremap <C-l> <C-w>l
 
 " font size
 set anti enc=utf-8
-set guifont=Inconsolata\ for\ Powerline\ 10
+set guifont=Inconsolata\ for\ Powerline\ 16
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -255,8 +255,8 @@ vmap <Leader>P "+P
 " Stop that stupid window from popping up
 map q: :q
 " alias Wq to wq
-command! Wq wq
-command! Q q
+"command! Wq wq
+"command! Q q
 
 "noremap <leader>yy "+y
 "noremap <leader>pp "+gP
@@ -288,18 +288,13 @@ vmap <C-v> <Plug>(expand_region_shrink)
 nnoremap <Leader>w :w<CR>
 
 " Tab Settings
-set noexpandtab   " use tabs
 set tabstop=8     " tabstops of 8
-set softtabstop=0
-set shiftwidth=4
-
-set list
-set listchars=tab:▸\ ,eol:¬
-
-"autocmd FileType c setlocal shiftwidth=4 tabstop=8
+set softtabstop=8
+set shiftwidth=8
+set noexpandtab   " use tabs, not spaces
 "set textwidth=78  " screen in 80 columns wide, wrap at 78
 " Go with smartindent if there is no plugin indent file.
-set autoindent " smartindent disabled
+"set autoindent smartindent
 "set smarttab
 
 set backspace=eol,start,indent  " Fix backspace indentation
@@ -314,7 +309,7 @@ syn keyword cOperator likely unlikely
 set colorcolumn=80
 
 set formatoptions=tcqlron
-"set cinoptions=:0,l1,t0,g0  " configures how to indent parts of code
+set cinoptions=:0,l1,t0,g0  " configures how to indent parts of code
 
 " Some indenting macros
 nmap <C-J> vip=     "forces (re)indentation of a block
