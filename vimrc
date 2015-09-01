@@ -27,10 +27,10 @@ Bundle 'bling/vim-airline'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'fatih/vim-go'
 
-"filetype plugin indent on
+filetype plugin indent on
 
 " Enable filetype plugins and indention
-"filetype plugin on
+filetype plugin on
 " Enable syntax colors
 syntax enable
 
@@ -110,13 +110,17 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(d|o|s|i)$',
   \ }
 
-
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 " turn off swapfiles
 "set noswapfile
 
 " Autoload Doxygen highlighting
 let g:load_doxygen_syntax=1
 
+set list!
+"set listchars=tab:▸\ ,eol:¬
+set listchars=trail:·,precedes:«,extends:»,tab:▸\ ,eol:¬
+set vb t_vb= " Turn off visual bell, error flash
 
 " Change <leader> to ',' and <localleader> to '\'
 let mapleader="\<Space>"
