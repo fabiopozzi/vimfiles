@@ -362,9 +362,6 @@ endif
 
 " Gvim Settings
 
-" utf-8 default encoding
-set enc=utf-8
-" set encoding=iso-8859-1
 
 " Prefer unix over windows over os9 formats
 set fileformats=unix,dos,mac
@@ -400,24 +397,24 @@ nnoremap <Leader>l :ls<CR>
 
 " python support
 " ------------
-autocmd BufNewFile,BufRead *.py setlocal tabstop=4
-autocmd BufNewFile,BufRead *.py setlocal softtabstop=4
-autocmd BufNewFile,BufRead *.py setlocal shiftwidth=4
-"autocmd BufNewFile,BufRead *.py setlocal textwidth=80
-autocmd BufNewFile,BufRead *.py setlocal smarttab
-autocmd BufNewFile,BufRead *.py setlocal expandtab
+"autocmd BufNewFile,BufRead *.py setlocal tabstop=4
+"autocmd BufNewFile,BufRead *.py setlocal softtabstop=4
+"autocmd BufNewFile,BufRead *.py setlocal shiftwidth=4
+""autocmd BufNewFile,BufRead *.py setlocal textwidth=80
+"autocmd BufNewFile,BufRead *.py setlocal smarttab
+"autocmd BufNewFile,BufRead *.py setlocal expandtab
 
 
 " ruby support
 " ------------
-autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=79
+"autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=79
 
 " autocmd BufWritePre *.py normal m`:%s/\s\+$//e `` " doesn't work
 
 
 " vim
 " ---
-autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
+"autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 
 set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
 
