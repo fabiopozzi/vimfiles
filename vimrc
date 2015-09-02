@@ -47,10 +47,6 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
-" Automatic fold view save for files - disabled, it doesn't work correctly
-"au BufWinLeave *.* silent! mkview
-"au BufWinEnter *.* silent! loadview
-
 " ui settings
 "colorscheme desert
 "colorscheme darkblue
@@ -164,15 +160,15 @@ autocmd BufEnter * :syntax sync fromstart
 nnoremap <silent> <F12> :BufExplorer<CR>
 
 " Left/Right arrow keys change buffers in all modes
-"noremap <Left> <Esc>:bp<CR>
-"inoremap <Left> <Esc>:bp<CR>
-"nnoremap <Left> <Esc>:bp<CR>
-"vnoremap <Left> <Esc>:bp<CR>
+noremap <Left> <Esc>:bp<CR>
+inoremap <Left> <Esc>:bp<CR>
+nnoremap <Left> <Esc>:bp<CR>
+vnoremap <Left> <Esc>:bp<CR>
 
-"noremap <Right> <Esc>:bn<CR>
-"inoremap <Right> <Esc>:bn<CR>
-"nnoremap <Right> <Esc>:bn<CR>
-"vnoremap <Right> <Esc>:bn<CR>
+noremap <Right> <Esc>:bn<CR>
+inoremap <Right> <Esc>:bn<CR>
+nnoremap <Right> <Esc>:bn<CR>
+vnoremap <Right> <Esc>:bn<CR>
 
 " Disable up/down arrow keys
 "noremap <up> <nop>
