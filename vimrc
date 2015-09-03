@@ -116,8 +116,7 @@ let g:load_doxygen_syntax=1
 set list!
 "set listchars=tab:▸\ ,eol:¬
 set listchars=trail:·,precedes:«,extends:»,tab:▸\ ,eol:¬
-set vb t_vb= " Turn off visual bell, error flash
-
+set vb t_vb= " Turn off visual bell, error flash 
 " Change <leader> to ',' and <localleader> to '\'
 let mapleader="\<Space>"
 let maplocalleader="\\"
@@ -140,12 +139,6 @@ nmap <F7> :NERDTreeToggle<CR>
 " I can type :help on my own, thanks.
 noremap <F1> <Esc>
 
-" remap move between splits
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
 " font size
 set anti enc=utf-8
 set guifont=Inconsolata\ for\ Powerline\ 16
@@ -160,15 +153,15 @@ autocmd BufEnter * :syntax sync fromstart
 nnoremap <silent> <F12> :BufExplorer<CR>
 
 " Left/Right arrow keys change buffers in all modes
-noremap <Left> <Esc>:bp<CR>
-inoremap <Left> <Esc>:bp<CR>
-nnoremap <Left> <Esc>:bp<CR>
-vnoremap <Left> <Esc>:bp<CR>
+noremap <C-S-Tab> <Esc>:bp<CR>
+inoremap <C-S-Tab> <Esc>:bp<CR>
+nnoremap <C-S-Tab> <Esc>:bp<CR>
+vnoremap <C-S-Tab> <Esc>:bp<CR>
 
-noremap <Right> <Esc>:bn<CR>
-inoremap <Right> <Esc>:bn<CR>
-nnoremap <Right> <Esc>:bn<CR>
-vnoremap <Right> <Esc>:bn<CR>
+noremap <C-Tab> <Esc>:bn<CR>
+inoremap <C-Tab> <Esc>:bn<CR>
+nnoremap <C-Tab> <Esc>:bn<CR>
+vnoremap <C-Tab> <Esc>:bn<CR>
 
 " Disable up/down arrow keys
 "noremap <up> <nop>
