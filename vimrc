@@ -116,7 +116,7 @@ let g:load_doxygen_syntax=1
 set list!
 "set listchars=tab:▸\ ,eol:¬
 set listchars=trail:·,precedes:«,extends:»,tab:▸\ ,eol:¬
-set vb t_vb= " Turn off visual bell, error flash 
+set vb t_vb= " Turn off visual bell, error flash
 " Change <leader> to ',' and <localleader> to '\'
 let mapleader="\<Space>"
 let maplocalleader="\\"
@@ -277,9 +277,9 @@ vmap <C-v> <Plug>(expand_region_shrink)
 nnoremap <Leader>w :w<CR>
 
 " Tab Settings
-set tabstop=8     " tabstops of 8
-set softtabstop=8
-set shiftwidth=8
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set noexpandtab   " use tabs, not spaces
 "set textwidth=78  " screen in 80 columns wide, wrap at 78
 " Go with smartindent if there is no plugin indent file.
