@@ -25,7 +25,7 @@ Bundle 'rking/ag.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'bling/vim-airline'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'fatih/vim-go'
+Bundle 'guns/vim-clojure-static'
 
 filetype plugin indent on
 
