@@ -20,7 +20,6 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'majutsushi/tagbar'
-"Bundle 'tpope/vim-fugitive'
 Bundle 'rking/ag.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'bling/vim-airline'
@@ -48,14 +47,12 @@ set undolevels=1000
 set undoreload=10000
 
 " ui settings
-"colorscheme desert
-"colorscheme darkblue
 colorscheme gruvbox
 
-set tabpagemax=15 " only 15 tabs
-set showmode      " display the current mode
+set tabpagemax=15	" only 15 tabs
+set showmode		" display the current mode
 set nocursorline
-set showcmd  " show partial commands in status line and selected characters in visual
+set showcmd			" show partial commands in status line and selected characters in visual
 
 " Make the command line two lines high and change the statusline display to
 " something that looks useful.
@@ -64,17 +61,14 @@ set laststatus=2
 " statusline splitted in parts
 set statusline=%<%f\    " Filename
 set statusline+=%w%h%m%r " Options
-set statusline+=%{fugitive#statusline()} "  Git Hotness
 set statusline+=\ [%{&ff}/%Y]            " filetype
 set statusline+=\ [%{getcwd()}]          " current dir
 set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-"set statusline=[%l,%v\ %P%M][CWD:\ %{CWD()}][FILE:\ %f]\ %r%h%w\ (%{&ff})\%{fugitive#statusline()}%*
 
 " set line numbers and column indicator on
-"
 set number
 "set ruler
-set nocursorcolumn
+"set nocursorcolumn
 syntax sync minlines=5
 noremap <F12> <Esc>:syntax sync fromstart<CR>
 inoremap <F12> <C-o>:syntax sync fromstart<CR>
@@ -117,27 +111,13 @@ set list!
 "set listchars=tab:▸\ ,eol:¬
 set listchars=trail:·,precedes:«,extends:»,tab:▸\ ,eol:¬
 set vb t_vb= " Turn off visual bell, error flash
-" Change <leader> to ',' and <localleader> to '\'
-let mapleader="\<Space>"
-let maplocalleader="\\"
 
 "let g:SuperTabDefaultCompletionType = "context"
-
-" ack configuration
-map <leader>a :Ag! 
-
-" ,b opens CtrlP buffer
-map <leader>b :CtrlPBuffer<CR>
-" NerdTree bindings
-map <leader>n :NERDTree<CR>
 
 " tagbar configuration
 let g:tagbar_usearrows = 1
 nmap <F8> :TagbarToggle<CR>
 nmap <F7> :NERDTreeToggle<CR>
-
-" I can type :help on my own, thanks.
-noremap <F1> <Esc>
 
 " font size
 set anti enc=utf-8
@@ -220,8 +200,6 @@ set hlsearch
 set incsearch
 set showmatch
 
-" Hide matches on <leader>s
-nnoremap <leader>s :nohlsearch<cr>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -252,29 +230,37 @@ map q: :q
 " paste multiple times
 "noremap p pgvy
 
-" Quit window on <leader>q
-nnoremap <leader>q :q<CR>
-
-" Set working directory
-nnoremap <leader>. :lcd %:p:h<CR>
-
 function! CWD()
     let curdir = substitute(getcwd(), '/home/wintermute', "~/", "g")
     return curdir
 endfunction
 
+" Change <leader> to ',' and <localleader> to '\'
+let mapleader="\<Space>"
+let maplocalleader="\\"
+
+"------------- Custom Keybindings --------------
+" I can type :help on my own, thanks.
+noremap <F1> <Esc>
+" fast save
+nnoremap <Leader>w :w<CR>
+" paste settings
+:map <F10> :set paste<CR>
+:map <F11> :set nopaste<CR>
+:imap <F10> <C-O>:set paste<CR>
+" Hide matches on <leader>s
+nnoremap <leader>s :nohlsearch<cr>
+" ack configuration
+map <leader>a :Ag! 
+" <leader>b opens CtrlP buffer
+map <leader>b :CtrlPBuffer<CR>
+" NerdTree bindings
+map <leader>n :NERDTree<CR>
 " NERDcommenter remaps
 map <Leader>c <plug>NERDCommenterInvert
 map <Leader>x <plug>NERDCommenterToggle
 
-" vim expand region mappings
 
-nmap <Leader><Leader> V
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-
-" fast save
-nnoremap <Leader>w :w<CR>
 
 " Tab Settings
 set tabstop=4
@@ -303,10 +289,6 @@ set cinoptions=:0,l1,t0,g0  " configures how to indent parts of code
 " Some indenting macros
 nmap <C-J> vip=     "forces (re)indentation of a block
 
-" paste settings
-:map <F10> :set paste<CR>
-:map <F11> :set nopaste<CR>
-:imap <F10> <C-O>:set paste<CR>
 " command to build a c file
 "set makeprg=gcc\ -o\ %<\ %
 
@@ -349,9 +331,6 @@ if has('cscope')
   command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
 endif
 
-" Gvim Settings
-
-
 " Prefer unix over windows over os9 formats
 set fileformats=unix,dos,mac
 
@@ -393,22 +372,9 @@ nnoremap <Leader>l :ls<CR>
 "autocmd BufNewFile,BufRead *.py setlocal smarttab
 "autocmd BufNewFile,BufRead *.py setlocal expandtab
 
-
-" ruby support
-" ------------
-"autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=79
-
-" autocmd BufWritePre *.py normal m`:%s/\s\+$//e `` " doesn't work
-
-
 " vim
 " ---
 "autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 
 set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
-
-" fugitive
-" -------
-"switch back to current file and closes fugitive buffer
-nnoremap <Leader>gD :diffoff!<cr><c-w>h:bd<cr>
 
