@@ -24,6 +24,8 @@ Bundle 'rking/ag.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'bling/vim-airline'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'fatih/vim-go'
 
 filetype plugin indent on
 
@@ -45,13 +47,22 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
+" Automatic fold view save for files - disabled, it doesn't work correctly
+"au BufWinLeave *.* silent! mkview
+"au BufWinEnter *.* silent! loadview
+
 " ui settings
+"if has("gui_running")
+  "colorscheme solarized
+"else
+  "colorscheme darkblue
+"endif
 colorscheme gruvbox
 
-set tabpagemax=15	" only 15 tabs
-set showmode		" display the current mode
+set tabpagemax=15 " only 15 tabs
+set showmode      " display the current mode
 set nocursorline
-set showcmd			" show partial commands in status line and selected characters in visual
+set showcmd  " show partial commands in status line and selected characters in visual
 
 " Make the command line two lines high and change the statusline display to
 " something that looks useful.
@@ -60,26 +71,27 @@ set laststatus=2
 " statusline splitted in parts
 set statusline=%<%f\    " Filename
 set statusline+=%w%h%m%r " Options
+set statusline+=%{fugitive#statusline()} "  Git Hotness
 set statusline+=\ [%{&ff}/%Y]            " filetype
 set statusline+=\ [%{getcwd()}]          " current dir
 set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+"set statusline=[%l,%v\ %P%M][CWD:\ %{CWD()}][FILE:\ %f]\ %r%h%w\ (%{&ff})\%{fugitive#statusline()}%*
 
 " set line numbers and column indicator on
+"
 set number
 "set ruler
-"set nocursorcolumn
+set nocursorcolumn
 syntax sync minlines=5
 noremap <F12> <Esc>:syntax sync fromstart<CR>
 inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
 "Gundo keymap
-"nnoremap <F5> :GundoToggle<CR>
+nnoremap <F5> :GundoToggle<CR>
 
 " Enable mouse everywhere
 set mouse=a
 
-" define custom colors for C function
-hi cCustomFunc cterm=bold ctermfg=DarkBlue
 
 " Hide mouse while typing
 set mousehide
@@ -111,12 +123,33 @@ set list!
 set listchars=trail:·,precedes:«,extends:»,tab:▸\ ,eol:¬
 set vb t_vb= " Turn off visual bell, error flash
 
+" Change <leader> to ',' and <localleader> to '\'
+let mapleader="\<Space>"
+let maplocalleader="\\"
+
 "let g:SuperTabDefaultCompletionType = "context"
+
+" ack configuration
+map <leader>a :Ag! 
+
+" ,b opens CtrlP buffer
+map <leader>b :CtrlPBuffer<CR>
+" go to next buffer
+map <leader>n :bn<CR>
 
 " tagbar configuration
 let g:tagbar_usearrows = 1
 nmap <F8> :TagbarToggle<CR>
 nmap <F7> :NERDTreeToggle<CR>
+
+" I can type :help on my own, thanks.
+noremap <F1> <Esc>
+
+" remap move between splits
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " font size
 set anti enc=utf-8
@@ -132,15 +165,15 @@ autocmd BufEnter * :syntax sync fromstart
 nnoremap <silent> <F12> :BufExplorer<CR>
 
 " Left/Right arrow keys change buffers in all modes
-noremap <C-S-Tab> <Esc>:bp<CR>
-inoremap <C-S-Tab> <Esc>:bp<CR>
-nnoremap <C-S-Tab> <Esc>:bp<CR>
-vnoremap <C-S-Tab> <Esc>:bp<CR>
+"noremap <Left> <Esc>:bp<CR>
+"inoremap <Left> <Esc>:bp<CR>
+"nnoremap <Left> <Esc>:bp<CR>
+"vnoremap <Left> <Esc>:bp<CR>
 
-noremap <C-Tab> <Esc>:bn<CR>
-inoremap <C-Tab> <Esc>:bn<CR>
-nnoremap <C-Tab> <Esc>:bn<CR>
-vnoremap <C-Tab> <Esc>:bn<CR>
+"noremap <Right> <Esc>:bn<CR>
+"inoremap <Right> <Esc>:bn<CR>
+"nnoremap <Right> <Esc>:bn<CR>
+"vnoremap <Right> <Esc>:bn<CR>
 
 " Disable up/down arrow keys
 "noremap <up> <nop>
@@ -199,6 +232,8 @@ set hlsearch
 set incsearch
 set showmatch
 
+" Hide matches on <leader>s
+nnoremap <leader>s :nohlsearch<cr>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -207,46 +242,56 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+" <leader>v selects the just pasted text
+nnoremap <leader>v V`]'
+
+" Copy/Paste to and from Desktop Environment
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
 " Stop that stupid window from popping up
 map q: :q
 " alias Wq to wq
 "command! Wq wq
 "command! Q q
 
+"noremap <leader>yy "+y
+"noremap <leader>pp "+gP
+" paste multiple times
+"noremap p pgvy
+
+" Quit window on <leader>q
+nnoremap <leader>q :q<CR>
+
+" Set working directory
+nnoremap <leader>. :lcd %:p:h<CR>
+
 function! CWD()
     let curdir = substitute(getcwd(), '/home/wintermute', "~/", "g")
     return curdir
 endfunction
 
-" Change <leader> to ',' and <localleader> to '\'
-let mapleader="\<Space>"
-let maplocalleader="\\"
-
-"------------- Custom Keybindings --------------
-" I can type :help on my own, thanks.
-noremap <F1> <Esc>
-" fast save
-nnoremap <Leader>w :w<CR>
-" paste settings
-:map <F10> :set paste<CR>
-:map <F11> :set nopaste<CR>
-:imap <F10> <C-O>:set paste<CR>
-" Hide matches on <leader>s
-nnoremap <leader>s :nohlsearch<cr>
-" ack configuration
-map <leader>a :Ag! 
-" <leader>b opens CtrlP buffer
-map <leader>b :CtrlPBuffer<CR>
-" NerdTree bindings
-map <leader>n :NERDTree<CR>
 " NERDcommenter remaps
 map <Leader>c <plug>NERDCommenterInvert
 map <Leader>x <plug>NERDCommenterToggle
 
+" vim expand region mappings
+
+nmap <Leader><Leader> V
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+" fast save
+nnoremap <Leader>w :w<CR>
+
 " Tab Settings
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=8     " tabstops of 8
+set softtabstop=8
+set shiftwidth=8
 set noexpandtab   " use tabs, not spaces
 "set textwidth=78  " screen in 80 columns wide, wrap at 78
 " Go with smartindent if there is no plugin indent file.
@@ -293,24 +338,7 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 let g:tagbar_usearrows = 1
 "nnoremap <leader>l :TagbarToggle<CR>
 
-
-" cscope settings
-if has('cscope')
-  set cscopetag cscopeverbose
-
-  if has('quickfix')
-    set cscopequickfix=s-,c-,d-,i-,t-,e-
-  endif
-
-  cnoreabbrev csa cs add
-  cnoreabbrev csf cs find
-  cnoreabbrev csk cs kill
-  cnoreabbrev csr cs reset
-  cnoreabbrev csh cs show
-  cnoreabbrev csh cs help
-
-  command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
-endif
+" Gvim Settings
 
 " Prefer unix over windows over os9 formats
 set fileformats=unix,dos,mac
@@ -353,9 +381,22 @@ nnoremap <Leader>l :ls<CR>
 "autocmd BufNewFile,BufRead *.py setlocal smarttab
 "autocmd BufNewFile,BufRead *.py setlocal expandtab
 
+" ruby support
+" ------------
+"autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=79
+
+" autocmd BufWritePre *.py normal m`:%s/\s\+$//e `` " doesn't work
+
+
 " vim
 " ---
 "autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 
 set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
 
+" fugitive
+" -------
+"switch back to current file and closes fugitive buffer
+nnoremap <Leader>gD :diffoff!<cr><c-w>h:bd<cr>
+
+let g:local_vimrc = {'names':['.vimrc'],'hash_fun':'LVRHashOfFile'}
