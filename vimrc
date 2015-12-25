@@ -120,10 +120,7 @@ nmap <F7> :NERDTreeToggle<CR>
 
 " font size
 set anti enc=utf-8
-set guifont=Inconsolata\ for\ Powerline\ 16
-
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+set guifont=Inconsolata\ 16
 
 " The PC is fast enough, do syntax highlight syncing from start
 autocmd BufEnter * :syntax sync fromstart
@@ -267,9 +264,6 @@ set colorcolumn=80
 set formatoptions=tcqlron
 set cinoptions=:0,l1,t0,g0  " configures how to indent parts of code
 
-" Some indenting macros
-nmap <C-J> vip=     "forces (re)indentation of a block
-
 " command to build a c file
 "set makeprg=gcc\ -o\ %<\ %
 
@@ -292,25 +286,6 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 " Tagbar
 let g:tagbar_usearrows = 1
 "nnoremap <leader>l :TagbarToggle<CR>
-
-
-" cscope settings
-if has('cscope')
-  set cscopetag cscopeverbose
-
-  if has('quickfix')
-    set cscopequickfix=s-,c-,d-,i-,t-,e-
-  endif
-
-  cnoreabbrev csa cs add
-  cnoreabbrev csf cs find
-  cnoreabbrev csk cs kill
-  cnoreabbrev csr cs reset
-  cnoreabbrev csh cs show
-  cnoreabbrev csh cs help
-
-  command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
-endif
 
 " Prefer unix over windows over os9 formats
 set fileformats=unix,dos,mac
