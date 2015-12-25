@@ -13,9 +13,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My bundles
-Bundle 'tadpol/autoload_cscope'
-Bundle 'vim-scripts/cscope.vim'
-Bundle 'fabiopozzi/cscope-quickfix'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jlanzarotta/bufexplorer'
@@ -138,16 +135,6 @@ noremap <C-Tab> <Esc>:bn<CR>
 inoremap <C-Tab> <Esc>:bn<CR>
 nnoremap <C-Tab> <Esc>:bn<CR>
 vnoremap <C-Tab> <Esc>:bn<CR>
-
-" Disable up/down arrow keys
-"noremap <up> <nop>
-"noremap <down> <nop>
-"nnoremap <up> <nop>
-"nnoremap <down> <nop>
-"vnoremap <up> <nop>
-"vnoremap <down> <nop>
-"inoremap <up> <nop>
-"inoremap <down> <nop>
 
 " Remember cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
