@@ -282,7 +282,7 @@ if has('autocmd')
   autocmd GUIEnter * set vb t_vb=
 endif
 
-
+let g:airline#extensions#tabline#enabled = 1
 " Keep some more lines for scope
 "set scrolloff=5
 
