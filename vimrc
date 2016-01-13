@@ -18,7 +18,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'majutsushi/tagbar'
 Bundle 'rking/ag.vim'
-Bundle 'kien/ctrlp.vim'
+Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'bling/vim-airline'
 Bundle 'airblade/vim-gitgutter'
 
