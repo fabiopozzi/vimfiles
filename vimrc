@@ -117,7 +117,7 @@ nmap <F7> :NERDTreeToggle<CR>
 
 " font size
 set anti enc=utf-8
-set guifont=Inconsolata\ 16
+set guifont=Inconsolata\ 12
 
 " The PC is fast enough, do syntax highlight syncing from start
 autocmd BufEnter * :syntax sync fromstart
@@ -126,15 +126,15 @@ autocmd BufEnter * :syntax sync fromstart
 nnoremap <silent> <F12> :BufExplorer<CR>
 
 " Left/Right arrow keys change buffers in all modes
-noremap <C-S-Tab> <Esc>:bp<CR>
-inoremap <C-S-Tab> <Esc>:bp<CR>
-nnoremap <C-S-Tab> <Esc>:bp<CR>
-vnoremap <C-S-Tab> <Esc>:bp<CR>
+noremap <Left> <Esc>:bp<CR>
+inoremap <Left> <Esc>:bp<CR>
+nnoremap <Left> <Esc>:bp<CR>
+vnoremap <Left> <Esc>:bp<CR>
 
-noremap <C-Tab> <Esc>:bn<CR>
-inoremap <C-Tab> <Esc>:bn<CR>
-nnoremap <C-Tab> <Esc>:bn<CR>
-vnoremap <C-Tab> <Esc>:bn<CR>
+noremap <Right> <Esc>:bn<CR>
+inoremap <Right> <Esc>:bn<CR>
+nnoremap <Right> <Esc>:bn<CR>
+vnoremap <Right> <Esc>:bn<CR>
 
 " Remember cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -151,9 +151,10 @@ set title
 set titleold="Terminal"
 set titlestring=%F\ -\ Vim
 
-" Disable Toolbar, Scrollbar
+" Disable Toolbar, Scrollbar, Menubar
 set guioptions-=T
 set guioptions-=r
+set guioptions-=m
 
 " Disable the stupid pydoc preview window for the omni completion
 set completeopt-=preview
@@ -306,18 +307,44 @@ nnoremap <Leader>l :ls<CR>
 " It's useful to show the buffer number in the status line.
 "set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
-" python support
-" ------------
-"autocmd BufNewFile,BufRead *.py setlocal tabstop=4
-"autocmd BufNewFile,BufRead *.py setlocal softtabstop=4
-"autocmd BufNewFile,BufRead *.py setlocal shiftwidth=4
-""autocmd BufNewFile,BufRead *.py setlocal textwidth=80
-"autocmd BufNewFile,BufRead *.py setlocal smarttab
-"autocmd BufNewFile,BufRead *.py setlocal expandtab
-
-" vim
-" ---
-"autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
+" Filetype dependant settings
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
 
 set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
 
+" Cscope settings
+if has("cscope")
+	" use both cscope and ctag for 'ctrl-]', ':ta' and 'vim -t'
+	set cscopetag
+
+	" check cscope for definition of a symbol before checking ctags: set to 1
+	" if you want the reverse search order
+	set csto=0
+
+	" add any cscope db in the current dir
+	if filereadable("cscope.out")
+		cs add cscope.out
+	" else add the db pointed by the env variable
+	elseif $CSCOPEDB != ""
+		cs add $CSCOPE_DB
+	endif
+
+	" show msg when any other cscope db added
+	set cscopeverbose
+
+	nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+	nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+	nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+endif
+
+" Fix man visualization on gvim
+runtime ftplugin/man.vim
+if has("gui_running")
+	nnoremap K :Man <cword><CR>
+endif
