@@ -6,21 +6,23 @@ set nocompatible
 set background=dark
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
 " My bundles
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jlanzarotta/bufexplorer'
-Bundle 'majutsushi/tagbar'
-Bundle 'rking/ag.vim'
-Bundle 'ctrlpvim/ctrlp.vim'
-Bundle 'bling/vim-airline'
-Bundle 'airblade/vim-gitgutter'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'majutsushi/tagbar'
+Plugin 'rking/ag.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'bling/vim-airline'
+Plugin 'airblade/vim-gitgutter'
+
+call vundle#end()
 
 filetype plugin indent on
 
