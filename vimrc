@@ -13,14 +13,12 @@ call vundle#begin()
 Bundle 'gmarik/vundle'
 
 " My bundles
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
 Plugin 'jlanzarotta/bufexplorer'
-Plugin 'majutsushi/tagbar'
 Plugin 'rking/ag.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()
 
@@ -231,13 +229,14 @@ map <Leader>c <plug>NERDCommenterInvert
 map <Leader>x <plug>NERDCommenterToggle
 
 " Tab Settings
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set noexpandtab   " use tabs, not spaces
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 "set textwidth=78  " screen in 80 columns wide, wrap at 78
 " Go with smartindent if there is no plugin indent file.
-"set autoindent smartindent
+set expandtab " use spaces
+set autoindent
+set smartindent
 "set smarttab
 
 set backspace=eol,start,indent  " Fix backspace indentation
