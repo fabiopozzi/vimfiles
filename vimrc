@@ -18,15 +18,12 @@ Plugin 'ap/vim-buftabline'
 Plugin 'rking/ag.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-ruby/vim-ruby'
 
 call vundle#end()
 
+" Enable filetype detection and intentation
 filetype plugin indent on
-
-" Enable filetype plugin and indention
-filetype plugin on
-" Enable syntax colors
-syntax enable
 
 " setup command history
 set history=1000
