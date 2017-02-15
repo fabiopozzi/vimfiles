@@ -1,54 +1,48 @@
 scriptencoding utf-8
 set encoding=utf-8
-" No vi compatibility
+" no vi compatibility
 set nocompatible
-" theme configuration
+" theme config
 set background=dark
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
 " My bundles
 Plugin 'jlanzarotta/bufexplorer'
+Plugin 'ap/vim-buftabline'
 Plugin 'rking/ag.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()
 
 filetype plugin indent on
 
-" Enable filetype plugins and indention
+" Enable filetype plugin and indention
 filetype plugin on
 " Enable syntax colors
 syntax enable
 
-" Setup command history
+" setup command history
 set history=1000
 
 " Move backup files to ~/.vim/sessions
 set backupdir=~/.vim/sessions
 set dir=~/.vim/sessions
 
-" Set persistent undo (?)
-set undodir=~/.vim/undodir
-set undofile
-set undolevels=1000
-set undoreload=10000
-
 " ui settings
 colorscheme gruvbox
 
-set tabpagemax=15	" only 15 tabs
-set showmode		" display the current mode
+" display current mode
+set showmode
 set nocursorline
-set showcmd			" show partial commands in status line and selected characters in visual
+" show partial commands in status line and selected characters in visual
+set showcmd
 
 " Make the command line two lines high and change the statusline display to
 " something that looks useful.
@@ -63,30 +57,6 @@ set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 
 " set line numbers and column indicator on
 set number
-"set ruler
-"set nocursorcolumn
-syntax sync minlines=5
-noremap <F12> <Esc>:syntax sync fromstart<CR>
-inoremap <F12> <C-o>:syntax sync fromstart<CR>
-
-"Gundo keymap
-"nnoremap <F5> :GundoToggle<CR>
-
-" Enable mouse everywhere
-set mouse=a
-
-" define custom colors for C function
-hi cCustomFunc cterm=bold ctermfg=DarkBlue
-
-" Hide mouse while typing
-set mousehide
-set mousemodel=popup
-
-" Code folding, not folded by default
-set foldmethod=manual
-"set foldmethod=syntax
-set foldlevel=99
-"set nofoldenable
 
 " Ctrl-p mappings
 let g:ctrlp_map = '<c-p>'
@@ -95,96 +65,20 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(d|o|s|i)$',
   \ }
-
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-" turn off swapfiles
-"set noswapfile
 
-" Autoload Doxygen highlighting
-let g:load_doxygen_syntax=1
-
+" highlight trailing whitespace, tab and eol
 set list!
 "set listchars=tab:▸\ ,eol:¬
 set listchars=trail:·,precedes:«,extends:»,tab:▸\ ,eol:¬
 set vb t_vb= " Turn off visual bell, error flash
-
-"let g:SuperTabDefaultCompletionType = "context"
-
-" tagbar configuration
-let g:tagbar_usearrows = 1
-nmap <F8> :TagbarToggle<CR>
-nmap <F7> :NERDTreeToggle<CR>
-
-" font size
-set anti enc=utf-8
-set guifont=Inconsolata\ 12
-
-" The PC is fast enough, do syntax highlight syncing from start
-autocmd BufEnter * :syntax sync fromstart
-
-" Buffers - explore/next/previous: Alt-F12, F12, Shift-F12.
-nnoremap <silent> <F12> :BufExplorer<CR>
-
-" Left/Right arrow keys change buffers in all modes
-noremap <Left> <Esc>:bp<CR>
-inoremap <Left> <Esc>:bp<CR>
-nnoremap <Left> <Esc>:bp<CR>
-vnoremap <Left> <Esc>:bp<CR>
-
-noremap <Right> <Esc>:bn<CR>
-inoremap <Right> <Esc>:bn<CR>
-nnoremap <Right> <Esc>:bn<CR>
-vnoremap <Right> <Esc>:bn<CR>
-
-" Remember cursor position
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-" Mutt and vim settings
-" limit text width to 72 characters
-au BufRead /tmp/mutt-* set tw=72
-
-" Enable hidden buffers
-set hidden
-
-" Enable automatic title setting for terminals
-set title
-set titleold="Terminal"
-set titlestring=%F\ -\ Vim
-
-" Disable Toolbar, Scrollbar, Menubar
-set guioptions-=T
-set guioptions-=r
-set guioptions-=m
-
-" Disable the stupid pydoc preview window for the omni completion
-set completeopt-=preview
-
-" omnicompletion setup
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCS
-
-" Disable the blinking cursor.
-set gcr=a:blinkon0
-
-set ttyfast
-
-" Customize the wildmenu
-set wildmenu
-set wildignore=*.o,*.pyc,*.bak,*.exe,*.i,*.s,*.d
-set wildmode=list:full
-set wildchar=<Tab> wildmenu wildmode=full
-
-" Global by default
-set gdefault
 
 " Better Search
 set hlsearch
 set incsearch
 set showmatch
 
-
+" highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
@@ -192,18 +86,7 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" Stop that stupid window from popping up
-map q: :q
-" alias Wq to wq
-"command! Wq wq
-"command! Q q
-
-function! CWD()
-    let curdir = substitute(getcwd(), '/home/wintermute', "~/", "g")
-    return curdir
-endfunction
-
-" Change <leader> to ',' and <localleader> to '\'
+" Change <leader> to 'space' and <localleader> to '\'
 let mapleader="\<Space>"
 let maplocalleader="\\"
 
@@ -222,11 +105,6 @@ nnoremap <leader>s :nohlsearch<cr>
 map <leader>a :Ag! 
 " <leader>b opens CtrlP buffer
 map <leader>b :CtrlPBuffer<CR>
-" NerdTree bindings
-map <leader>n :NERDTree<CR>
-" NERDcommenter remaps
-map <Leader>c <plug>NERDCommenterInvert
-map <Leader>x <plug>NERDCommenterToggle
 
 " Tab Settings
 set tabstop=2
@@ -238,114 +116,3 @@ set expandtab " use spaces
 set autoindent
 set smartindent
 "set smarttab
-
-set backspace=eol,start,indent  " Fix backspace indentation
-"set backspace=indent,eol,start" Fix backspace indentation (original)
-"syntax on
-
-" highlighting for some special keywords (linux kernel specific)
-syn keyword cType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t u_int64_t u_int32_t u_int16_t u_int8_t
-syn keyword cOperator likely unlikely
-
-" highlight column 80
-set colorcolumn=80
-
-set formatoptions=tcqlron
-set cinoptions=:0,l1,t0,g0  " configures how to indent parts of code
-
-" command to build a c file
-"set makeprg=gcc\ -o\ %<\ %
-
-" automatically lookup for the tags file in the file tree
-"set tags+=tags;
-
-" Taglist
-let Tlist_Compact_Format = 1
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'
-let Tlist_Enable_Fold_Column = 0
-let Tlist_Exist_OnlyWindow = 1
-let Tlist_File_Fold_Auto_Close = 0
-let Tlist_sort_type = "name"
-let Tlist_Use_Right_Window = 1
-let TlistHighlightTag = 1
-let Tlist_Width = 40
-let Tlist_GainFocus_On_ToggleOpen = 1
-"nnoremap <leader>l :Tlist<CR>
-
-" Tagbar
-let g:tagbar_usearrows = 1
-"nnoremap <leader>l :TagbarToggle<CR>
-
-" Prefer unix over windows over os9 formats
-set fileformats=unix,dos,mac
-
-" Don't bell or blink(Courtesy: Cream Editor).
-if has('autocmd')
-  autocmd GUIEnter * set vb t_vb=
-endif
-
-let g:airline#extensions#tabline#enabled = 1
-" Keep some more lines for scope
-"set scrolloff=5
-
-" hide some files and remove stupid help
-let g:netrw_list_hide='^\.,.\(pyc\|pyo\|o\)$'
-
-" Split window management
-"nnoremap <leader>w <C-w>v<C-w>l
-"nnoremap <leader>W <C-w>s
-"nnoremap <leader>s :new<CR>
-
-" open tabs using Ctrl-t
-":nmap <C-t> :tabnew<CR>
-":imap <C-t> <Esc>:tabnew<CR>
-
-" Mappings to access buffers (don't use "\p" because a
-" delay before pressing "p" would accidentally paste).
-" \l       : list buffers
-nnoremap <Leader>l :ls<CR>
-
-" It's useful to show the buffer number in the status line.
-"set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-
-" Filetype dependant settings
-let g:xml_syntax_folding=1
-au FileType xml setlocal foldmethod=syntax
-
-set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
-
-" Cscope settings
-if has("cscope")
-	" use both cscope and ctag for 'ctrl-]', ':ta' and 'vim -t'
-	set cscopetag
-
-	" check cscope for definition of a symbol before checking ctags: set to 1
-	" if you want the reverse search order
-	set csto=0
-
-	" add any cscope db in the current dir
-	if filereadable("cscope.out")
-		cs add cscope.out
-	" else add the db pointed by the env variable
-	elseif $CSCOPEDB != ""
-		cs add $CSCOPE_DB
-	endif
-
-	" show msg when any other cscope db added
-	set cscopeverbose
-
-	nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-	nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-endif
-
-" Fix man visualization on gvim
-runtime ftplugin/man.vim
-if has("gui_running")
-	nnoremap K :Man <cword><CR>
-endif
