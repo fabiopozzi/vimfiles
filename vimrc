@@ -108,11 +108,38 @@ map <leader>b :CtrlPBuffer<CR>
 
 " Tab Settings
 set tabstop=2
-set softtabstop=2
 set shiftwidth=2
-"set textwidth=78  " screen in 80 columns wide, wrap at 78
-" Go with smartindent if there is no plugin indent file.
+set shiftround
 set expandtab " use spaces
+
+" Use one space, not two, after punctuation
+set nojoinspaces
+
+" Go with smartindent if there is no plugin indent file.
 set autoindent
 set smartindent
 "set smarttab
+
+" Tab completion
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+set wildmode=list:longest,list:full
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <S-Tab> <c-n>
+
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
