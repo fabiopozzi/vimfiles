@@ -70,7 +70,11 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 set list!
 "set listchars=tab:▸\ ,eol:¬
 set listchars=trail:·,precedes:«,extends:»,tab:▸\ ,eol:¬
-set vb t_vb= " Turn off visual bell, error flash
+set vb t_vb= " Terminal: Turn off visual bell, error flash
+" GUI: Don't bell or blink(Courtesy: Cream Editor).
+if has('autocmd')
+  autocmd GUIEnter * set vb t_vb=
+endif
 
 " Better Search
 set hlsearch
