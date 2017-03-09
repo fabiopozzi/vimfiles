@@ -147,3 +147,14 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+" Left/Right arrow keys change buffers in all modes
+noremap <Left> <Esc>:bp<CR>
+inoremap <Left> <Esc>:bp<CR>
+nnoremap <Left> <Esc>:bp<CR>
+vnoremap <Left> <Esc>:bp<CR>
+
+noremap <Right> <Esc>:bn<CR>
+inoremap <Right> <Esc>:bn<CR>
+nnoremap <Right> <Esc>:bn<CR>
+vnoremap <Right> <Esc>:bn<CR>
