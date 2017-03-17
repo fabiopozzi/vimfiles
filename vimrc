@@ -34,6 +34,10 @@ set history=1000
 set backupdir=~/.vim/sessions
 set dir=~/.vim/sessions
 
+" Persistant undo
+set undofile
+set undodir=~/.vim/undo
+
 " ui settings
 colorscheme gruvbox
 
@@ -149,12 +153,12 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Left/Right arrow keys change buffers in all modes
-noremap <Left> <Esc>:bp<CR>
-inoremap <Left> <Esc>:bp<CR>
-nnoremap <Left> <Esc>:bp<CR>
-vnoremap <Left> <Esc>:bp<CR>
+noremap <C-Left> <Esc>:bp<CR>
+inoremap <C-Left> <Esc>:bp<CR>
+nnoremap <C-Left> <Esc>:bp<CR>
+vnoremap <C-Left> <Esc>:bp<CR>
 
-noremap <Right> <Esc>:bn<CR>
-inoremap <Right> <Esc>:bn<CR>
-nnoremap <Right> <Esc>:bn<CR>
-vnoremap <Right> <Esc>:bn<CR>
+noremap <C-Right> <Esc>:bn<CR>
+inoremap <C-Right> <Esc>:bn<CR>
+nnoremap <C-Right> <Esc>:bn<CR>
+vnoremap <C-Right> <Esc>:bn<CR>
