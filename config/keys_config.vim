@@ -1,16 +1,17 @@
 "------------- Custom Keybindings --------------
 " I can type :help on my own, thanks.
 noremap <F1> <Esc>
-" fast save
+" Fast save
 nnoremap <Leader>w :w<CR>
-" paste settings
+" Paste settings
 :map <F10> :set paste<CR>
 :map <F11> :set nopaste<CR>
 :imap <F10> <C-O>:set paste<CR>
+
 " Hide matches on <leader>s
 nnoremap <leader>s :nohlsearch<cr>
 
-" ack configuration
+" The silver-searcher configuration
 map <leader>a :Ag! 
 
 " Left/Right arrow keys change buffers in all modes

@@ -100,7 +100,9 @@ set titlestring=%F\ -\ Vim
 " Disable the blinking cursor.
 set gcr=a:blinkon0
 
+" Fix slow vim terminal slow scrolling
 set ttyfast
+set lazyredraw
 
 " Customize the wildmenu
 set wildmenu
@@ -108,7 +110,7 @@ set wildignore=*.o,*.pyc,*.bak,*.exe,*.i,*.s,*.d
 set wildmode=list:full
 set wildchar=<Tab> wildmenu wildmode=full
 
-" Global by default
+" Assume the /g flag on :s substitutions to replace all matches in a line:
 set gdefault
 
 " Better Search
