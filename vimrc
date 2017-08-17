@@ -12,6 +12,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'ap/vim-buftabline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rking/ag.vim'
+Plug 'majutsushi/tagbar'
 call plug#end()
 
 " filetype off

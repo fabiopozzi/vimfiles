@@ -10,21 +10,8 @@ let g:ctrlp_custom_ignore = {
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " tagbar configuration
-let g:tagbar_usearrows = 1
+"let g:tagbar_usearrows = 1
 nmap <F8> :TagbarToggle<CR>
-
-" Taglist
-let Tlist_Compact_Format = 1
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'
-let Tlist_Enable_Fold_Column = 0
-let Tlist_Exist_OnlyWindow = 1
-let Tlist_File_Fold_Auto_Close = 0
-let Tlist_sort_type = "name"
-let Tlist_Use_Right_Window = 1
-let TlistHighlightTag = 1
-let Tlist_Width = 40
-let Tlist_GainFocus_On_ToggleOpen = 1
-"nnoremap <leader>l :Tlist<CR>
 
 " Cscope settings
 if has("cscope")
