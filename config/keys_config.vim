@@ -30,7 +30,6 @@ map q: :q
 " alias Wq to wq
 "command! Wq wq
 
-
 " Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
