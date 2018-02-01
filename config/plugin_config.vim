@@ -48,3 +48,8 @@ runtime ftplugin/man.vim
 if has("gui_running")
 	nnoremap K :Man <cword><CR>
 endif
+
+" set python interpreter
+"let g:python_host_prog = '/usr/local/bin/python3.6'
+" set python syntax checker
+let g:syntastic_python_checkers = ['pylint']

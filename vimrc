@@ -146,11 +146,6 @@ set smartindent
 
 set backspace=eol,start,indent  " Fix backspace indentation
 
-" set python interpreter
-"let g:python_host_prog = '/usr/local/bin/python3.6'
-" set python syntax checker
-let g:syntastic_python_checkers = ['pylint']
-
 source $HOME/config/plugin_config.vim
 source $HOME/config/keys_config.vim
 source $HOME/config/syntax_highlight.vim
