@@ -3,28 +3,23 @@ Vimfiles
 
 These are my personal vimfiles, including:
 
-* the vimrc file
-* the bundle folder containing plugins 
-  handled by [vundle](https://github.com/gmarik/vundle "vundle")
+* the main vimrc file
+* the config folder containing:
+  * keybindings
+  * plugin config
+  * syntax highlighting configuration
+All plugins are handled by [vim-plug](https://github.com/junegunn/vim-plug "vim-plug")
 
-The plugin I use in this configuration are
-* ag.vim
-* autoload\_cscope
-* cscope\-quickfix
-* cscope.vim
-* NERDcommenter
-* NERDtree
-* tagbar
-* vim-fugitive
-* vundle
-* ZoomWin
+The plugins I'm using now are:
+* bufexplorer
+* vim-buftabline
 * ctrlp
-* gundo
-* vim-airline
+* ag.vim
+* tagbar
+* syntastic
+* vim-go
 
-All of them are fetched from github repos by vundle thus all links to the
-plugins I use can be found inside the vimrc file.
+All of them are fetched from github repos by vim-plug thus all links to the
+plugins can be found at the beginning of the vimrc file.
 
 Fabio
-
-
