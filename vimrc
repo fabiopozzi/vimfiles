@@ -14,7 +14,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rking/ag.vim'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
-Plug 'nvie/vim-flake8'
+Plug 'fatih/vim-go'
 call plug#end()
 
 " filetype off
@@ -85,7 +85,7 @@ set listchars=trail:·,precedes:«,extends:»,tab:▸\ ,eol:¬
 set vb t_vb= " Turn off visual bell, error flash
 
 " Font size
-set anti enc=utf-8
+"set anti enc=utf-8
 set gfn=Source\ Code\ Pro:h15,Menlo:h15
 " Monaco:h14
 
@@ -145,6 +145,11 @@ set smartindent
 "set smarttab
 
 set backspace=eol,start,indent  " Fix backspace indentation
+
+" set python interpreter
+"let g:python_host_prog = '/usr/local/bin/python3.6'
+" set python syntax checker
+let g:syntastic_python_checkers = ['pylint']
 
 source $HOME/config/plugin_config.vim
 source $HOME/config/keys_config.vim
