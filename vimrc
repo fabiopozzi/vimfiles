@@ -15,6 +15,7 @@ Plug 'rking/ag.vim'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
 Plug 'fatih/vim-go'
+Plug '/usr/local/opt/fzf'
 call plug#end()
 
 " filetype off
