@@ -103,6 +103,9 @@ set titlestring=%F\ -\ Vim
 " Disable the blinking cursor.
 set gcr=a:blinkon0
 
+" Enable clipboard copy/paste
+set clipboard=unnamed
+
 " Fix slow vim terminal slow scrolling
 set ttyfast
 set lazyredraw
