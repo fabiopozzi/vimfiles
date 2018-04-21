@@ -141,15 +141,18 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 "set textwidth=78  " screen in 80 columns wide, wrap at 78
-" Go with smartindent if there is no plugin indent file.
 set expandtab " use spaces
-set autoindent " auto indent
-set smartindent
+set autoindent " auto indent enabled
 "set smarttab
+
+syntax sync minlines=5
+noremap <F5> <Esc>:syntax sync fromstart<CR>
+inoremap <F5> <C-o>:syntax sync fromstart<CR>
+" The PC is fast enough, do syntax highlight syncing from start
+autocmd BufEnter * :syntax sync fromstart
 
 set backspace=eol,start,indent  " Fix backspace indentation
 
 source $HOME/config/plugin_config.vim
 source $HOME/config/keys_config.vim
-source $HOME/config/syntax_highlight.vim
 
