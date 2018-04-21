@@ -15,11 +15,15 @@ The plugins I'm using now are:
 * vim-buftabline
 * ctrlp
 * ag.vim
-* tagbar
 * syntastic
 * vim-go
+* vim-rails
 
 All of them are fetched from github repos by vim-plug thus all links to the
 plugins can be found at the beginning of the vimrc file.
+
+I added the `after/ftplugin` directory to enable custom indentation settings for
+different source files.
+It must be linked under ~/.vim
 
 Fabio
