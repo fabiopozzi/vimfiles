@@ -12,10 +12,9 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'ap/vim-buftabline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rking/ag.vim'
-Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
 Plug 'fatih/vim-go'
-Plug '/usr/local/opt/fzf'
+Plug 'tpope/vim-rails'
 call plug#end()
 
 " filetype off
