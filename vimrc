@@ -12,7 +12,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'ap/vim-buftabline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rking/ag.vim'
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-rails'
 call plug#end()
