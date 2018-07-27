@@ -19,3 +19,5 @@ endif
 "let g:python_host_prog = '/usr/local/bin/python3.6'
 " set python syntax checker
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
