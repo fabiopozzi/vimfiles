@@ -140,7 +140,7 @@ autocmd BufWinLeave * call clearmatches()
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-"set textwidth=78  " screen in 80 columns wide, wrap at 78
+set textwidth=79  " screen in 80 columns wide, wrap at 78
 set expandtab " use spaces
 set autoindent " auto indent enabled
 "set smarttab
