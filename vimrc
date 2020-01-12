@@ -12,9 +12,8 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'ap/vim-buftabline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rking/ag.vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'fatih/vim-go'
-Plug 'tpope/vim-rails'
+Plug 'vim-scripts/taglist.vim'
+" Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 " filetype off
@@ -23,6 +22,10 @@ filetype plugin indent on
 
 " Enable syntax colors
 syntax enable
+
+" prevent accidentally entering ex mode
+map q: <Nop>
+nnoremap Q <nop>
 
 " Setup command history
 set history=500
@@ -84,10 +87,7 @@ set list!
 set listchars=trail:·,precedes:«,extends:»,tab:▸\ ,eol:¬
 set vb t_vb= " Turn off visual bell, error flash
 
-" Font size
-"set anti enc=utf-8
-set gfn=Source\ Code\ Pro:h15,Menlo:h15
-" Monaco:h14
+" Font size TBD
 
 " Remember cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -143,6 +143,7 @@ set shiftwidth=4
 set textwidth=79  " screen in 80 columns wide, wrap at 78
 set expandtab " use spaces
 set autoindent " auto indent enabled
+set shiftround " round indent to multiple of 'shiftwidth'
 "set smarttab
 
 syntax sync minlines=5
@@ -156,3 +157,7 @@ set backspace=eol,start,indent  " Fix backspace indentation
 source $HOME/config/plugin_config.vim
 source $HOME/config/keys_config.vim
 
+" === netrw config ===
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_winsize = 20
