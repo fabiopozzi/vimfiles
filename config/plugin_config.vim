@@ -15,6 +15,11 @@ if has("gui_running")
 	nnoremap K :Man <cword><CR>
 endif
 
+" Syntastic config
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 " set python interpreter
 "let g:python_host_prog = '/usr/local/bin/python3'
 " set python syntax checker
