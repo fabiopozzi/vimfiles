@@ -8,12 +8,12 @@ set encoding=utf-8
 " Load plugins
 set runtimepath^=~/.vim/plugged/ctrlp.vim
 call plug#begin('~/.vim/plugged')
-Plug 'jlanzarotta/bufexplorer'
 Plug 'ap/vim-buftabline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rking/ag.vim'
-Plug 'vim-scripts/taglist.vim'
-" Plug 'vim-syntastic/syntastic'
+Plug 'pangloss/vim-javascript'
+Plug 'preservim/nerdcommenter'
+Plug 'andymass/vim-matchup'
 call plug#end()
 
 " filetype off
